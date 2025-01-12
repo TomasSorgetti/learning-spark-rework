@@ -1,0 +1,16 @@
+export default function CheckIcon({ size = "25", color = "white" }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 25 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.90313 18.1676L4.20312 12.4676L5.62813 11.0426L9.90313 15.3176L19.0781 6.14258L20.5031 7.56758L9.90313 18.1676Z"
+        fill={color}
+      />
+    </svg>
+  );
+}

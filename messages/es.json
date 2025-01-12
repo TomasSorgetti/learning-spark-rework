@@ -1,7 +1,44 @@
 {
   "HomePage": {
-    "title": "Hola Mundo!",
-    "about": "ir a about"
+    "Banner": {
+      "title": "Expert Online Tutors for IB and IGCSE Exams, Essays and Assesments",
+      "description": "Expert coaching for Extended Essays, Internal Assessments, and exam preparation in Mathematics, Biology, Physics, and more. Learn anywhere, anytime!",
+      "cta": "Book now"
+    },
+    "Pricing": {
+      "title": "IB & IGCSE Tutoring Plans Personalized for Your Success",
+      "description": "Choose the perfect IB or IGCSE tutoring plan: personalized one-on-one sessions, 10-class packages, or 20-class intensive programs. Tailored study plans to help you excel in your exams.",
+      "OneOnOne": {
+        "title": "One-on-one classes",
+        "price": "US$ 45",
+        "salePrice": "US$ 39",
+        "List": {
+          "1": "10hs per month",
+          "2": "20hs per month"
+        },
+        "cta": "Book Your Session Today!"
+      },
+      "10Class": {
+        "title": "10-class package",
+        "price": "US$ 400",
+        "salePrice": "US$ 359",
+        "List": {
+          "1": "10hs per month",
+          "2": "20hs per month"
+        },
+        "cta": "Get Your Discount Now!"
+      },
+      "20Class": {
+        "title": "20-class package",
+        "price": "US$ 800",
+        "salePrice": "US$ 679",
+        "List": {
+          "1": "10hs per month",
+          "2": "20hs per month"
+        },
+        "cta": "Enroll Now!"
+      }
+    }
   },
   "NotFound": {
     "title": "Página no encontrada",

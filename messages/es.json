@@ -1,0 +1,11 @@
+{
+  "HomePage": {
+    "title": "Hola Mundo!",
+    "about": "ir a about"
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que estás buscando no existe",
+    "button": "Ir a la página de inicio"
+  }
+}

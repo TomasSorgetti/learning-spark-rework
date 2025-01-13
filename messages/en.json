@@ -38,6 +38,12 @@
         },
         "cta": "Enroll Now!"
       }
+    },
+    "GroupClass": {
+      "title": "Affordable Learning with IB & IGCSE Group Classes",
+      "description": "Join our group classes tailored for IB and IGCSE students. Study in a collaborative environment, exchange strategies with peers, and prepare for your exams in a dynamic and engaging way.",
+      "price": "US$ 34",
+      "cta": "Inquire Now!"
     }
   },
   "NotFound": {

@@ -1,0 +1,33 @@
+export default function TikTokIcon({ size = "36" }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 36 36"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        opacity="0.1"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0.890625 17.9453C0.890625 8.0344 8.92502 0 18.836 0C28.7469 0 36.7813 8.0344 36.7813 17.9453C36.7813 27.8563 28.7469 35.8907 18.836 35.8907C8.92502 35.8907 0.890625 27.8563 0.890625 17.9453Z"
+        fill="#211842"
+      />
+      <path
+        d="M27.8535 14V22C27.8535 24.7614 25.6149 27 22.8535 27H14.8535C12.0921 27 9.85352 24.7614 9.85352 22V14C9.85352 11.2386 12.0921 9 14.8535 9H22.8535C25.6149 9 27.8535 11.2386 27.8535 14Z"
+        stroke="#211842"
+        strokeWidth="1.66667"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.8535 18C15.1967 18 13.8535 19.3431 13.8535 21C13.8535 22.6569 15.1967 24 16.8535 24C18.5104 24 19.8535 22.6569 19.8535 21V12C20.1868 13 21.4535 15 23.8535 15"
+        stroke="#211842"
+        strokeWidth="1.66667"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

@@ -95,7 +95,10 @@ export default async function Pricing({ t }) {
   ];
 
   return (
-    <section className="px-4 py-16 flex flex-col items-center text-center gap-6 sm:py-24 lg:py-36">
+    <section
+      id="pricing"
+      className="px-4 py-16 flex flex-col items-center text-center gap-6 sm:py-24 lg:py-36"
+    >
       <h2 className="text-[24px] max-w-[400px] sm:text-[28px] sm:max-w-[500px] lg:text-[38px] lg:max-w-[796px]">
         {t("HomePage.Pricing.title")}
       </h2>

@@ -12,13 +12,13 @@ export default function PricingCard({
 }) {
   return (
     <div
-      className={`w-full max-w-[300px] px-6 py-8 flex flex-col items-start gap-8 rounded-[20px] border border-[1px]-lightBlue shadow-sm ${
-        active ? "bg-darkBlue" : "bg-white"
+      className={`w-full max-w-[300px] px-6 py-8 flex flex-col items-start gap-8 rounded-[20px] border border-[1px]-terciary shadow-sm ${
+        active ? "bg-secondary" : "bg-white"
       } lg:max-w-[400px] lg:px-8 lg:py-10`}
     >
       <h3
         className={`text-[18px] font-bold uppercase ${
-          active ? "text-white" : "text-darkBlue"
+          active ? "text-white" : "text-secondary"
         }`}
       >
         {title}
@@ -26,14 +26,14 @@ export default function PricingCard({
       <div className="text-left">
         <p
           className={`line-through text-[18px] ${
-            active ? "text-white" : "text-darkBlue"
+            active ? "text-white" : "text-secondary"
           }`}
         >
           {price}
         </p>
         <p
           className={`relative font-bold text-[42px] ${
-            active ? "text-white" : "text-darkBlue"
+            active ? "text-white" : "text-secondary"
           }`}
         >
           {salePrice}{" "}
@@ -46,11 +46,11 @@ export default function PricingCard({
         {list.map((item) => (
           <li
             className={`flex items-center gap-2 font-light text-[16px] ${
-              active ? "text-white" : "text-lightBlue"
+              active ? "text-white" : "text-terciary"
             }`}
             key={`${item.id}-${id}`}
           >
-            <CheckIcon color={active ? "white" : "darkBlue"} />
+            <CheckIcon color={active ? "white" : "secondary"} />
             {item.text}
           </li>
         ))}

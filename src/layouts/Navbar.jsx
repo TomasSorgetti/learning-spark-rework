@@ -3,6 +3,7 @@
 import { useState } from "react";
 import MainButton from "@/components/buttons/MainButton";
 import HamburgerButton from "@/components/buttons/HamburgerButton";
+import Logo from "@/components/icons/Logo";
 
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false);
@@ -19,7 +20,7 @@ export default function Navbar() {
     <header className="bg-white shadow-xl fixed top-0 z-50 w-full py-6 px-4">
       <nav className="w-full max-w-[1440px] mx-auto flex justify-between items-center">
         <a className="z-50 text-gradient" href="#">
-          Learning Spark
+          <Logo size="sm" />
         </a>
         <HamburgerButton handleClick={toggleNavbar} />
         <ul

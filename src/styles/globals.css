@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Bold.ttf");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-SemiBold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --primary: #fe3f60;
+  --secondary: #211842;
+  --terciary: #36314e;
+  --white: #ffffff;
+
+  --alter1: #ffc600;
+  --alter2: #1addc2;
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--light-blue);
+  font-family: "Manrope";
+  font-weight: 400;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--dark-blue);
+  font-weight: 800;
+  font-family: "Poppins";
+}
+a {
+  font-family: "Poppins";
+  font-weight: 700;
+}

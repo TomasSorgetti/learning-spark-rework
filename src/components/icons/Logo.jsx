@@ -1,6 +1,9 @@
-export default function Logo() {
+export default function Logo({ size = "sm" }) {
   return (
     <svg
+      className={`${
+        size === "sm" ? "w-[92px] lg:w-[218px]" : "w-[110px] lg:w-[380px]"
+      }`}
       width="218"
       height="69"
       viewBox="0 0 218 69"

@@ -17,7 +17,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="bg-white shadow-xl fixed top-0 z-50 w-full py-6 px-4">
+    <header className="bg-white shadow-xl fixed top-0 z-50 w-full py-2 px-4">
       <nav className="w-full max-w-[1440px] mx-auto flex justify-between items-center">
         <a className="z-50 text-gradient" href="#">
           <Logo size="sm" />

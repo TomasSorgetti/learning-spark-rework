@@ -29,6 +29,7 @@
 
   --alter1: #ffc600;
   --alter2: #1addc2;
+  --alter3: #d3203e;
 
   margin: 0;
   padding: 0;
@@ -38,7 +39,7 @@
 
 body {
   background-color: var(--white);
-  color: var(--light-blue);
+  color: var(--terciary);
   font-family: "Manrope";
   font-weight: 400;
 }
@@ -48,11 +49,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--dark-blue);
+  color: var(--secondary);
   font-weight: 800;
   font-family: "Poppins";
-}
-a {
-  font-family: "Poppins";
-  font-weight: 700;
 }

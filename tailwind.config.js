@@ -15,6 +15,11 @@ module.exports = {
         white: "var(--white)",
         alter1: "var(--alter1)",
         alter2: "var(--alter2)",
+        alter3: "var(--alter3)",
+      },
+      fontFamily: {
+        poppins: ["Poppins"],
+        manrope: ["Manrope"],
       },
     },
   },

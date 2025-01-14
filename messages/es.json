@@ -44,6 +44,10 @@
       "description": "Join our group classes tailored for IB and IGCSE students. Study in a collaborative environment, exchange strategies with peers, and prepare for your exams in a dynamic and engaging way.",
       "price": "US$ 34",
       "cta": "Inquire Now!"
+    },
+    "Contact": {
+      "title": "Contact us",
+      "description": "Do you have any questions or concerns? Don’t see the subject you want? Send us your message, and we’ll get back to you very soon."
     }
   },
   "NotFound": {

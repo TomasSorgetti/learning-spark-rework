@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import HomeBanner from "@/layouts/home/Banner";
 import Pricing from "@/layouts/home/Pricing";
 import GroupClass from "@/layouts/home/GroupClass";
+import Contact from "@/layouts/home/Contact";
 
 export default async function HomePage() {
   const t = await getTranslations();
@@ -11,6 +12,7 @@ export default async function HomePage() {
       <HomeBanner t={t} />
       <Pricing t={t} />
       <GroupClass t={t} />
+      <Contact t={t} />
     </main>
   );
 }

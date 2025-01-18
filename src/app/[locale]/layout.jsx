@@ -2,7 +2,7 @@ import "../../styles/globals.css";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/layouts/Navbar";
 import Footer from "@/layouts/Footer";

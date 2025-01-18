@@ -1,10 +1,10 @@
+"use client";
+
+import { redirect, usePathname } from "next/navigation";
+
 export default function NotFound() {
-  return (
-    <html>
-      <body>
-        <h1>Not Found Page</h1>
-        <p>asdasd</p>
-      </body>
-    </html>
-  );
+  const pathname = usePathname();
+  const locale = pathname.split("/")[1];
+
+  redirect(`/${locale}/notfound`);
 }

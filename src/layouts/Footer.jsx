@@ -65,7 +65,7 @@ const Footer = ({ t }) => {
           </div>
         </div>
       </article>
-      <p className="pt-12 pb-16 text-[0.65rem] font-normal text-subTitleColor lg:text-center xl:text-[0.875rem]">
+      <p className="py-6 text-[0.65rem] font-normal text-subTitleColor lg:text-center xl:text-[0.875rem]">
         ©Copyright {new Date().getFullYear()} Learning Spark. All rights
         reserved.
       </p>

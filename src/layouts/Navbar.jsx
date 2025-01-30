@@ -4,6 +4,7 @@ import { useState } from "react";
 import MainButton from "@/components/buttons/MainButton";
 import HamburgerButton from "@/components/buttons/HamburgerButton";
 import Logo from "@/components/icons/Logo";
+import LanguageChange from "@/components/locale/LanguageChange";
 
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false);
@@ -36,6 +37,9 @@ export default function Navbar() {
           </li>
           <li onClick={hideNavbar} className="flex items-center">
             <a href="#about">About Us</a>
+          </li>
+          <li>
+            <LanguageChange />
           </li>
           <li onClick={hideNavbar}>
             <MainButton href="#">Book now</MainButton>

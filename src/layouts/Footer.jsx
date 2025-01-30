@@ -1,6 +1,7 @@
 import Logo from "@/components/icons/Logo";
 import TikTokIcon from "@/components/icons/TikTokIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
+import { constants } from "@/constants";
 
 const Footer = ({ t }) => {
   const whatsapp = "5491139478794";
@@ -15,14 +16,14 @@ const Footer = ({ t }) => {
             <h5 className="text-[1.25rem] font-poppins font-semibold">
               Contact Info
             </h5>
-            <a href="mailto:contacto@learning-spark.com" target="blank">
-              contacto@learning-spark.com
+            <a href={`mailto:${constants.email}`} target="blank">
+              {constants.email}
             </a>
             <a
               href={`https://api.whatsapp.com/send?phone=${whatsapp}`}
               target="blank"
             >
-              (+54 9)11 3947-8794
+              {constants.whatsapp}
             </a>
             <div className="flex gap-3">
               <a

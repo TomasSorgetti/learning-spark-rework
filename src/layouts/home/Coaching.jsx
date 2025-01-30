@@ -1,9 +1,10 @@
 import MainButton from "@/components/buttons/MainButton";
+import { constants } from "@/constants";
 import Image from "next/image";
 
 export default function Coaching({ t }) {
   return (
-    <section className="px-4 sm:px-8 md:px-16 lg:my-32">
+    <section id="coaching" className="px-4 sm:px-8 md:px-16 lg:my-32">
       <article className="relative flex flex-col bg-[url('/images/coaching/bg_mobile.png')] bg-cover bg-bottom min-h-[calc(700px+30vh)] h-screen w-full px-6 py-8 rounded-[20px] sm:min-h-[calc(800px+30vh)] md:min-h-[1000px] md:max-w-[800px] md:mx-auto md:bg-[url('/images/coaching/bg_tablet.png')] lg:bg-[url('/images/coaching/bg_desktop.png')] lg:w-full lg:max-w-[1280px] lg:min-h-[400px] lg:h-[600px] lg:flex-row lg:px-0 lg:justify-between">
         <div className="absolute top-0 right-0 w-full bg-alter1 flex justify-center rounded-t-[20px] lg:w-auto lg:right-0 lg:rounded-tl-none lg:rounded-tr-[19px] lg:px-6 lg:py-2">
           <strong className="text-[32px] font-bold flex justify-center items-start">
@@ -36,7 +37,9 @@ export default function Coaching({ t }) {
           <p className="text-white text-[16px] lg:text-[18px]">
             {t("HomePage.Coaching.description")}
           </p>
-          <MainButton>{t("HomePage.Coaching.cta")}</MainButton>
+          <MainButton href={constants.whatsappLink} target="_blank">
+            {t("HomePage.Coaching.cta")}
+          </MainButton>
         </div>
       </article>
     </section>

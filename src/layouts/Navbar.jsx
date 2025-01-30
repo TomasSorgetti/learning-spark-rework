@@ -42,7 +42,7 @@ export default function Navbar() {
             <LanguageChange />
           </li>
           <li onClick={hideNavbar}>
-            <MainButton href="#">Book now</MainButton>
+            <MainButton href="#contact">Book now</MainButton>
           </li>
         </ul>
       </nav>

@@ -1,5 +1,6 @@
 import CardButton from "../buttons/CardButton";
 import CheckIcon from "../icons/CheckIcon";
+import { constants } from "@/constants";
 
 export default function PricingCard({
   id,
@@ -58,7 +59,7 @@ export default function PricingCard({
         </ul>
       </div>
 
-      <CardButton href="#">{cta}</CardButton>
+      <CardButton href={`${constants.whatsappLink}`}>{cta}</CardButton>
     </div>
   );
 }

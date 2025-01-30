@@ -1,4 +1,5 @@
 import MainButton from "@/components/buttons/MainButton";
+import { constants } from "@/constants";
 import Image from "next/image";
 
 export default function GroupClass({ t }) {
@@ -15,7 +16,9 @@ export default function GroupClass({ t }) {
           {t("HomePage.GroupClass.price")}
           <span className="absolute top-3 right-[-12px] text-[12px]">99</span>
         </span>
-        <MainButton href="#">{t("HomePage.GroupClass.cta")}</MainButton>
+        <MainButton href={constants.whatsappLink} target="_blank">
+          {t("HomePage.GroupClass.cta")}
+        </MainButton>
       </div>
       <Image
         className="w-full h-auto max-w-[702.93px] lg:max-w-[50%]"

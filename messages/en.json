@@ -45,6 +45,11 @@
       "price": "US$ 34",
       "cta": "Inquire Now!"
     },
+    "Coaching": {
+      "title": "Expert Coaching for IB Extended Essays & Internal Assessments",
+      "description": "Submit your Extended Essay and Internal Assessment projects for expert feedback. Get personalized guidance to excel in your assessments and achieve top results.",
+      "cta": "Start Coaching"
+    },
     "Contact": {
       "title": "Contact us",
       "description": "Do you have any questions or concerns? Don’t see the subject you want? Send us your message, and we’ll get back to you very soon."

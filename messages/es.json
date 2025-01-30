@@ -45,6 +45,11 @@
       "price": "US$ 34",
       "cta": "Inquire Now!"
     },
+    "Coaching": {
+      "title": "Coaching experto para Monografías y Evaluaciones Internas del IB",
+      "description": "Envía tus proyectos de Monografía y Evaluaciones Internas para recibir retroalimentación experta. Obtén orientación personalizada para destacar en tus evaluaciones y alcanzar los mejores resultados.",
+      "cta": "Comenzar coaching"
+    },
     "Contact": {
       "title": "Contact us",
       "description": "Do you have any questions or concerns? Don’t see the subject you want? Send us your message, and we’ll get back to you very soon."

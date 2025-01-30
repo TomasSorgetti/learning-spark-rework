@@ -7,7 +7,7 @@ export default function Contact({ t }) {
   return (
     <section
       id="contactanos"
-      className="h-[344px] font-manrope px-10 md:pl-[100px] pb-2 pt-0 mt-6 bg-secondary sm:px-20 lg:flex lg:p-0 lg:mt-20 lg:h-[400px] lg:max-w-[1440px] lg:m-auto lg:justify-between 2xl:h-[400px] 2xl:items-center"
+      className="h-[344px] font-manrope px-10 md:pl-[100px] pb-2 pt-0 mt-6 bg-secondary sm:px-20 lg:flex lg:p-0 lg:mt-20 lg:h-[400px] max-w-[1280px] lg:m-auto lg:justify-between 2xl:h-[400px] 2xl:items-center"
     >
       <article className="lg:w-[460px] lg:py-16 lg:pl-20 2xl:pl-36 flex flex-col h-full justify-evenly py-8 2xl:gap-4 3xl:w-[860px]">
         <h3 className="font-poppins text-white text-[1.5rem] xl:text-[2.188rem] font-extrabold">

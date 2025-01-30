@@ -13,8 +13,10 @@
         "price": "US$ 45",
         "salePrice": "US$ 39",
         "List": {
-          "1": "10hs per month",
-          "2": "20hs per month"
+          "1": "A trial class",
+          "2": "Supporting materials",
+          "3": "Post-class feedback session",
+          "4": "Flexibility to choose the schedule"
         },
         "cta": "Book Your Session Today!"
       },
@@ -23,8 +25,11 @@
         "price": "US$ 400",
         "salePrice": "US$ 359",
         "List": {
-          "1": "10hs per month",
-          "2": "20hs per month"
+          "1": "Everything from the 1-class Pack",
+          "2": "Exclusive discount on future classes",
+          "3": "Access to additional resources",
+          "4": "Access to a free review class",
+          "5": "Study planning advice"
         },
         "cta": "Get Your Discount Now!"
       },
@@ -33,8 +38,12 @@
         "price": "US$ 800",
         "salePrice": "US$ 679",
         "List": {
-          "1": "10hs per month",
-          "2": "20hs per month"
+          "1": "Everything from the 10-class Pack",
+          "2": "Personalized follow-up sessions",
+          "3": "Study technique consultancy",
+          "4": "Priority in scheduling",
+          "5": "Completion certificate (if applicable)",
+          "6": "Access to exclusive content"
         },
         "cta": "Enroll Now!"
       }

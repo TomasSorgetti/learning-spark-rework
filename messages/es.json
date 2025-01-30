@@ -1,58 +1,67 @@
 {
   "HomePage": {
     "Banner": {
-      "title": "Expert Online Tutors for IB and IGCSE Exams, Essays and Assesments",
-      "description": "Expert coaching for Extended Essays, Internal Assessments, and exam preparation in Mathematics, Biology, Physics, and more. Learn anywhere, anytime!",
-      "cta": "Book now"
+      "title": "Tutores Online Expertos para Exámenes, Ensayos y Evaluaciones del IB e IGCSE",
+      "description": "Coaching experto para Ensayos Extendidos, Evaluaciones Internas y preparación de exámenes en Matemáticas, Biología, Física y más. ¡Aprende desde cualquier lugar, en cualquier momento!",
+      "cta": "Reserva ahora"
     },
     "Pricing": {
-      "title": "IB & IGCSE Tutoring Plans Personalized for Your Success",
-      "description": "Choose the perfect IB or IGCSE tutoring plan: personalized one-on-one sessions, 10-class packages, or 20-class intensive programs. Tailored study plans to help you excel in your exams.",
+      "title": "Planes de Tutoría IB e IGCSE Personalizados para tu Éxito",
+      "description": "Elige el plan de tutoría perfecto para IB o IGCSE: sesiones personalizadas uno a uno, paquetes de 10 clases o programas intensivos de 20 clases. Planes de estudio adaptados para ayudarte a destacar en tus exámenes.",
       "OneOnOne": {
-        "title": "One-on-one classes",
+        "title": "Clases uno a uno",
         "price": "US$ 45",
         "salePrice": "US$ 39",
         "List": {
-          "1": "10hs per month",
-          "2": "20hs per month"
+          "1": "Una clase de prueba",
+          "2": "Material de apoyo",
+          "3": "Sesión de feedback post-clase",
+          "4": "Flexibilidad para elegir el horario"
         },
-        "cta": "Book Your Session Today!"
+        "cta": "¡Reserva tu sesión hoy!"
       },
       "10Class": {
-        "title": "10-class package",
+        "title": "Paquete de 10 clases",
         "price": "US$ 400",
         "salePrice": "US$ 359",
         "List": {
-          "1": "10hs per month",
-          "2": "20hs per month"
+          "1": "Todo lo del Pack de 1 clase",
+          "2": "Descuento exclusivo en futuras clases",
+          "3": "Acceso a recursos adicionales",
+          "4": "Acceso a una clase de repaso gratuita",
+          "5": "Asesoramiento de estudios"
         },
-        "cta": "Get Your Discount Now!"
+        "cta": "¡Obtén tu descuento ahora!"
       },
       "20Class": {
-        "title": "20-class package",
+        "title": "Paquete de 20 clases",
         "price": "US$ 800",
         "salePrice": "US$ 679",
         "List": {
-          "1": "10hs per month",
-          "2": "20hs per month"
+          "1": "Todo lo del Pack de 10 clases",
+          "2": "Sesiones de seguimiento personalizadas",
+          "3": "Consultoría sobre técnicas de estudio",
+          "4": "Prioridad en la reserva de horarios",
+          "5": "Certificado de finalización (si aplica)",
+          "6": "Acceso a contenido exclusivo"
         },
-        "cta": "Enroll Now!"
+        "cta": "¡Inscríbete ahora!"
       }
     },
     "GroupClass": {
-      "title": "Affordable Learning with IB & IGCSE Group Classes",
-      "description": "Join our group classes tailored for IB and IGCSE students. Study in a collaborative environment, exchange strategies with peers, and prepare for your exams in a dynamic and engaging way.",
+      "title": "Aprendizaje Asequible con Clases Grupales de IB e IGCSE",
+      "description": "Únete a nuestras clases grupales diseñadas para estudiantes de IB e IGCSE. Estudia en un entorno colaborativo, intercambia estrategias con tus compañeros y prepárate para tus exámenes de una manera dinámica y atractiva.",
       "price": "US$ 34",
-      "cta": "Inquire Now!"
+      "cta": "¡Consulta ahora!"
     },
     "Coaching": {
-      "title": "Coaching experto para Monografías y Evaluaciones Internas del IB",
-      "description": "Envía tus proyectos de Monografía y Evaluaciones Internas para recibir retroalimentación experta. Obtén orientación personalizada para destacar en tus evaluaciones y alcanzar los mejores resultados.",
-      "cta": "Comenzar coaching"
+      "title": "Expert Coaching for IB Extended Essays and Internal Assessments",
+      "description": "Send your Extended Essays and Internal Assessments for expert feedback. Receive personalized guidance to excel in your evaluations and achieve the best results.",
+      "cta": "Start Coaching"
     },
     "Contact": {
-      "title": "Contact us",
-      "description": "Do you have any questions or concerns? Don’t see the subject you want? Send us your message, and we’ll get back to you very soon."
+      "title": "Contáctanos",
+      "description": "¿Tienes alguna pregunta o inquietud? ¿No encuentras el tema que buscas? Envíanos tu mensaje y nos pondremos en contacto contigo muy pronto."
     }
   },
   "NotFound": {

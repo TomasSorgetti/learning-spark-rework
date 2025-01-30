@@ -14,19 +14,15 @@ export default async function Pricing({ t }) {
         },
         {
           id: 2,
-          text: t("HomePage.Pricing.OneOnOne.List.1"),
+          text: t("HomePage.Pricing.OneOnOne.List.2"),
         },
         {
           id: 3,
-          text: t("HomePage.Pricing.OneOnOne.List.1"),
+          text: t("HomePage.Pricing.OneOnOne.List.3"),
         },
         {
           id: 4,
-          text: t("HomePage.Pricing.OneOnOne.List.1"),
-        },
-        {
-          id: 5,
-          text: t("HomePage.Pricing.OneOnOne.List.1"),
+          text: t("HomePage.Pricing.OneOnOne.List.4"),
         },
       ],
       cta: t("HomePage.Pricing.OneOnOne.cta"),
@@ -44,19 +40,19 @@ export default async function Pricing({ t }) {
         },
         {
           id: 2,
-          text: t("HomePage.Pricing.10Class.List.1"),
+          text: t("HomePage.Pricing.10Class.List.2"),
         },
         {
           id: 3,
-          text: t("HomePage.Pricing.10Class.List.1"),
+          text: t("HomePage.Pricing.10Class.List.3"),
         },
         {
           id: 4,
-          text: t("HomePage.Pricing.10Class.List.1"),
+          text: t("HomePage.Pricing.10Class.List.4"),
         },
         {
           id: 5,
-          text: t("HomePage.Pricing.10Class.List.1"),
+          text: t("HomePage.Pricing.10Class.List.5"),
         },
       ],
       cta: t("HomePage.Pricing.10Class.cta"),
@@ -74,19 +70,23 @@ export default async function Pricing({ t }) {
         },
         {
           id: 2,
-          text: t("HomePage.Pricing.20Class.List.1"),
+          text: t("HomePage.Pricing.20Class.List.2"),
         },
         {
           id: 3,
-          text: t("HomePage.Pricing.20Class.List.1"),
+          text: t("HomePage.Pricing.20Class.List.3"),
         },
         {
           id: 4,
-          text: t("HomePage.Pricing.20Class.List.1"),
+          text: t("HomePage.Pricing.20Class.List.4"),
         },
         {
           id: 5,
-          text: t("HomePage.Pricing.20Class.List.1"),
+          text: t("HomePage.Pricing.20Class.List.5"),
+        },
+        {
+          id: 6,
+          text: t("HomePage.Pricing.20Class.List.6"),
         },
       ],
       cta: t("HomePage.Pricing.20Class.cta"),

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function GroupClass({ t }) {
   return (
-    <section className="flex flex-col-reverse items-center gap-8 px-4 my-16 lg:flex-row lg:items-center lg:px-8 max-w-[1440px] mx-auto lg:my-[100px] lg:justify-between">
+    <section className="flex flex-col-reverse items-center gap-8 px-4 my-16 lg:flex-row lg:items-center lg:px-8 max-w-[1280px] mx-auto lg:my-[100px] lg:justify-between">
       <div className="text-center flex flex-col items-center gap-4 lg:items-start lg:text-left">
         <h2 className="text-[24px] max-w-[400px] sm:text-[28px] sm:max-w-[543px] lg:text-[38px] lg:max-w-[550px]">
           {t("HomePage.GroupClass.title")}

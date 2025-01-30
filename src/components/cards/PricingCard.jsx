@@ -13,9 +13,9 @@ export default function PricingCard({
 }) {
   return (
     <div
-      className={`w-full max-w-[300px] px-6 py-8 flex flex-col items-start justify-between rounded-[20px] border border-[1px]-terciary shadow-sm ${
+      className={`w-full max-w-[400px] px-6 py-8 flex flex-col items-start justify-between rounded-[20px] border border-[1px]-terciary shadow-sm ${
         active ? "bg-secondary" : "bg-white"
-      } lg:max-w-[400px] lg:px-8 lg:py-10 h-[580px]`}
+      } lg:px-8 lg:py-10 h-[580px]`}
     >
       <div className="flex flex-col items-start gap-8">
         <h3
@@ -47,7 +47,7 @@ export default function PricingCard({
         <ul className="mb-16 flex flex-col gap-1 items-start">
           {list.map((item) => (
             <li
-              className={`flex items-center gap-2 font-light text-[16px] ${
+              className={`flex items-start justify-start text-left gap-2 font-light text-[16px] ${
                 active ? "text-white" : "text-terciary"
               }`}
               key={`${item.id}-${id}`}

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --primary: #fe3f60;
   --secondary: #211842;
@@ -11,7 +10,8 @@
 
   --alter1: #ffc600;
   --alter2: #1addc2;
-  --alter3: #d3203e;
+  --alter3: #fe1e45;
+  --alter4: #c61130;
 
   margin: 0;
   padding: 0;

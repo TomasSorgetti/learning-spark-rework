@@ -16,6 +16,7 @@ module.exports = {
         alter1: "var(--alter1)",
         alter2: "var(--alter2)",
         alter3: "var(--alter3)",
+        alter4: "var(--alter4)",
       },
       fontFamily: {
         poppins: ["Poppins"],

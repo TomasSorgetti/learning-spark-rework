@@ -28,7 +28,10 @@ export default function LanguageChange() {
   }, [show]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div
+      className="relative flex items-center justify-center"
+      ref={dropdownRef}
+    >
       <button
         aria-label="Change language"
         aria-expanded={show} // Indica si el menú está abierto
@@ -45,12 +48,21 @@ export default function LanguageChange() {
         } flex flex-col gap-4 px-6 py-2 rounded-md`}
       >
         <li role="menuitem" onClick={closeDropdown}>
-          <Link href="/" locale="es" ref={firstMenuItemRef}>
+          <Link
+            href="/"
+            locale="es"
+            ref={firstMenuItemRef}
+            className="hover:font-bold hover:text-secondary p-2"
+          >
             Español
           </Link>
         </li>
         <li role="menuitem" onClick={closeDropdown}>
-          <Link href="/" locale="en">
+          <Link
+            href="/"
+            locale="en"
+            className="hover:font-bold hover:text-secondary p-2"
+          >
             English
           </Link>
         </li>

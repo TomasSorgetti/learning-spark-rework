@@ -30,13 +30,22 @@ export default function Navbar() {
           } lg:relative lg:w-auto lg:bg-transparent lg:h-auto lg:flex-row lg:gap-8 lg:translate-x-0 `}
         >
           <li onClick={hideNavbar} className="flex items-center">
-            <a href="#pricing">Pricing</a>
+            <a href="#pricing" className="hover:text-secondary hover:font-bold">
+              Pricing
+            </a>
           </li>
           <li onClick={hideNavbar} className="flex items-center">
-            <a href="#coaching">Coaching</a>
+            <a
+              href="#coaching"
+              className="hover:text-secondary hover:font-bold"
+            >
+              Coaching
+            </a>
           </li>
           <li onClick={hideNavbar} className="flex items-center">
-            <a href="#about">About Us</a>
+            <a href="#about" className="hover:text-secondary hover:font-bold">
+              About Us
+            </a>
           </li>
           <li>
             <LanguageChange />

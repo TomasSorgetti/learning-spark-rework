@@ -4,11 +4,17 @@ import { useState, useRef, useEffect } from "react";
 import LanguageIcon from "../icons/LanguageIcon";
 import useClickOutside from "@/hooks/useClickOutside";
 import { Link } from "@/i18n/routing";
+import { useLocale } from "next-intl";
 
+/**
+ * Language change component
+ * @returns {JSX.Element}
+ */
 export default function LanguageChange() {
+  const locale = useLocale();
   const [show, setShow] = useState(false);
   const dropdownRef = useRef(null);
-  const firstMenuItemRef = useRef(null); // Ref para el primer elemento del menú
+  const firstMenuItemRef = useRef(null);
 
   const toggleDropdown = () => {
     setShow((prev) => !prev);
@@ -20,7 +26,6 @@ export default function LanguageChange() {
 
   useClickOutside(dropdownRef, closeDropdown);
 
-  // Cuando el menú se abre, establecer el foco en el primer elemento del menú
   useEffect(() => {
     if (show && firstMenuItemRef.current) {
       firstMenuItemRef.current.focus();
@@ -34,7 +39,7 @@ export default function LanguageChange() {
     >
       <button
         aria-label="Change language"
-        aria-expanded={show} // Indica si el menú está abierto
+        aria-expanded={show}
         onClick={toggleDropdown}
       >
         <LanguageIcon />
@@ -52,7 +57,9 @@ export default function LanguageChange() {
             href="/"
             locale="es"
             ref={firstMenuItemRef}
-            className="hover:font-bold hover:text-secondary p-2"
+            className={`hover:font-bold hover:text-secondary p-2 ${
+              locale === "es" ? "font-bold text-secondary" : ""
+            }`}
           >
             Español
           </Link>
@@ -61,7 +68,9 @@ export default function LanguageChange() {
           <Link
             href="/"
             locale="en"
-            className="hover:font-bold hover:text-secondary p-2"
+            className={`hover:font-bold hover:text-secondary p-2 ${
+              locale === "en" ? "font-bold text-secondary" : ""
+            }`}
           >
             English
           </Link>

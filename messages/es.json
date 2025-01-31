@@ -62,8 +62,11 @@
     "About": {
       "span": "¿QUIÉNES SOMOS?",
       "title": "Sobre Learning Spark",
-      "description1": "Sabemos lo difícil y estresante que puede ser prepararse para los exámenes internacionales y por eso queremos darte la tranquilidad de que podemos ayudarte a alcanzar tu máximo potencial.",
-      "description2": "Nuestro equipo de profesionales altamente especializados te guiará en un ambiente bilingüe y enfocado en los exámenes IB y IGCSE. Prepárate para el éxito con las primeras tutorías especializadas diseñadas exclusivamente para estos desafiantes programas educativos."
+      "description1": "Sabemos lo difícil y estresante que puede ser prepararse para los exámenes internacionales y por eso queremos darte la tranquilidad de que",
+      "description1span": "podemos ayudarte a alcanzar tu máximo potencial.",
+      "description2": "Nuestro equipo de profesionales altamente especializados te guiará en un",
+      "description2span": "ambiente bilingüe y enfocado en los exámenes IB y IGCSE.",
+      "description2End": "Prepárate para el éxito con las primeras tutorías especializadas diseñadas exclusivamente para estos desafiantes programas educativos."
     },
     "Contact": {
       "title": "Contáctanos",

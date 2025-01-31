@@ -62,8 +62,11 @@
     "About": {
       "span": "WHO WE ARE",
       "title": "About Learning Spark",
-      "description1": "We get it preparing for those international exams can be seriously tough and stressful. But guess what? We're here to tell you that we've got your back, and we're all about helping you unleash your full potential.",
-      "description2": "Our team of specialized tutors is dedicated to making this journey enjoyable and effortless. Join our tailored classes in English or Spanish, designed for IB (International Baccalaureate) and IGCSE exam success. We provide top-notch tutoring, customized for these demanding programs, offering personalized guidance every step of the way. Let's embark on an exciting learning journey together!"
+      "description1": "We get it—preparing for those international exams can be seriously tough and stressful. But guess what? We're here to tell you that we've got your back, and",
+      "description1span": "we're all about helping you unleash your full potential.",
+      "description2": "Our team of specialized tutors is dedicated to making this journey enjoyable and effortless.",
+      "description2span": "Join our tailored classes in English or Spanish, designed for IB (International Baccalaureate) and IGCSE exam success.",
+      "description2End": "We provide top-notch tutoring, customized for these demanding programs, offering personalized guidance every step of the way. Let's embark on an exciting learning journey together!"
     },
     "Contact": {
       "title": "Contact us",

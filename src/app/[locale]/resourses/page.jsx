@@ -1,20 +1,40 @@
-export default function ResoursesPage() {
+import ResoursesBanner from "@/layouts/resourses/ResoursesBanner";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({ params, searchParams }, parent) {
+  const locale = (await params).locale;
+
+  const metadata = {
+    en: {
+      title: "Learning Spark | Study Resources for IB & IGCSE",
+      description:
+        "Find subject-specific materials to enhance your exam preparation, extended essays, and internal assessments. Access guides, exercises, and key tools to study efficiently at your own pace.",
+      keywords:
+        "study resources, exam preparation, extended essays, internal assessments",
+    },
+    es: {
+      title: "Learning Spark | Recursos de estudio para IB & IGCSE",
+      description:
+        "Encuentra materiales organizados por materia para mejorar tu preparación en exámenes, monografías y evaluaciones internas. Accede a guías, ejercicios y herramientas clave para estudiar de manera eficiente y a tu ritmo.",
+      keywords:
+        "preparación materias, exámenes, monografías, evaluaciones internas",
+    },
+  };
+
+  const selectedMetadata = metadata[locale] || metadata.en;
+
+  return {
+    title: selectedMetadata.title,
+    description: selectedMetadata.description,
+  };
+}
+
+export default async function ResoursesPage({ params, searchParams }) {
+  const t = await getTranslations();
+
   return (
     <main>
-      <h1>Resourses</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, ab
-        nostrum. Facilis nihil consectetur ipsam asperiores numquam iure,
-        accusamus suscipit vel neque quas dolores consequuntur unde ad
-        aspernatur quaerat ipsum. Sunt adipisci consequuntur sequi, maxime
-        dolorum ea quisquam illo doloremque animi ducimus excepturi facilis?
-        Assumenda eum deserunt amet molestiae. Laboriosam beatae inventore
-        assumenda iusto provident quisquam consectetur facere dignissimos
-        repellendus. Corrupti cupiditate quae explicabo unde exercitationem
-        eaque reprehenderit facilis, tempore ullam! Nihil non, ratione
-        temporibus itaque porro, deleniti officia modi aspernatur consequatur a
-        ut blanditiis qui enim nam id! Quod?
-      </p>
+      <ResoursesBanner t={t} />
     </main>
   );
 }

@@ -59,10 +59,20 @@
       "description": "Send your Extended Essays and Internal Assessments for expert feedback. Receive personalized guidance to excel in your evaluations and achieve the best results.",
       "cta": "Start Coaching"
     },
+    "About": {
+      "span": "¿QUIÉNES SOMOS?",
+      "title": "Sobre Learning Spark",
+      "description1": "Sabemos lo difícil y estresante que puede ser prepararse para los exámenes internacionales y por eso queremos darte la tranquilidad de que podemos ayudarte a alcanzar tu máximo potencial.",
+      "description2": "Nuestro equipo de profesionales altamente especializados te guiará en un ambiente bilingüe y enfocado en los exámenes IB y IGCSE. Prepárate para el éxito con las primeras tutorías especializadas diseñadas exclusivamente para estos desafiantes programas educativos."
+    },
     "Contact": {
       "title": "Contáctanos",
       "description": "¿Tienes alguna pregunta o inquietud? ¿No encuentras el tema que buscas? Envíanos tu mensaje y nos pondremos en contacto contigo muy pronto."
     }
+  },
+  "ResoursesPage": {
+    "title": "Recursos de estudio para IB & IGCSE",
+    "description": "Encuentra materiales organizados por materia para mejorar tu preparación en exámenes, monografías y evaluaciones internas. Accede a guías, ejercicios y herramientas clave para estudiar de manera eficiente y a tu ritmo."
   },
   "NotFound": {
     "title": "Página no encontrada",

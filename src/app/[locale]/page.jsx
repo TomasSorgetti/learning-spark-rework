@@ -5,6 +5,7 @@ import GroupClass from "@/layouts/home/GroupClass";
 import Contact from "@/layouts/home/Contact";
 import Coaching from "@/layouts/home/Coaching";
 import WhatsappButton from "@/components/buttons/WhatsappButton";
+import About from "@/layouts/home/About";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const locale = (await params).locale;
@@ -43,6 +44,7 @@ export default async function HomePage({ params, searchParams }) {
       <Pricing t={t} />
       <GroupClass t={t} />
       <Coaching t={t} />
+      <About t={t} />
       <Contact t={t} />
       <WhatsappButton />
     </main>

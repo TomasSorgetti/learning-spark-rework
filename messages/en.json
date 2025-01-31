@@ -59,10 +59,20 @@
       "description": "Submit your Extended Essay and Internal Assessment projects for expert feedback. Get personalized guidance to excel in your assessments and achieve top results.",
       "cta": "Start Coaching"
     },
+    "About": {
+      "span": "WHO WE ARE",
+      "title": "About Learning Spark",
+      "description1": "We get it preparing for those international exams can be seriously tough and stressful. But guess what? We're here to tell you that we've got your back, and we're all about helping you unleash your full potential.",
+      "description2": "Our team of specialized tutors is dedicated to making this journey enjoyable and effortless. Join our tailored classes in English or Spanish, designed for IB (International Baccalaureate) and IGCSE exam success. We provide top-notch tutoring, customized for these demanding programs, offering personalized guidance every step of the way. Let's embark on an exciting learning journey together!"
+    },
     "Contact": {
       "title": "Contact us",
       "description": "Do you have any questions or concerns? Don’t see the subject you want? Send us your message, and we’ll get back to you very soon."
     }
+  },
+  "ResoursesPage": {
+    "title": "Study Resources for IB & IGCSE",
+    "description": "Find subject-specific materials to enhance your exam preparation, extended essays, and internal assessments. Access guides, exercises, and key tools to study efficiently at your own pace."
   },
   "NotFound": {
     "title": "Page not found",

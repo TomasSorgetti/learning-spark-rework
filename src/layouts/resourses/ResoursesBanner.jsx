@@ -1,12 +1,8 @@
-export default function ResoursesBanner() {
+export default function ResoursesBanner({ t }) {
   return (
-    <section>
-      <h1>Resourses</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est veritatis
-        optio soluta quis accusantium quia, dolore ipsum doloremque sunta
-        tempora!
-      </p>
+    <section className="h-[400px] bg-gray-50">
+      <h1>{t("ResoursesPage.title")}</h1>
+      <p>{t("ResoursesPage.description")}</p>
     </section>
   );
 }

@@ -1,3 +1,5 @@
+"use server";
+
 import ResoursesBanner from "@/layouts/resourses/ResoursesBanner";
 import { getTranslations } from "next-intl/server";
 

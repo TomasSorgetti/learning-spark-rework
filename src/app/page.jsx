@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 
-export default RootPage(){
-    redirect("/en")
+export default function RootPage() {
+  redirect("/en");
+  return null;
 }

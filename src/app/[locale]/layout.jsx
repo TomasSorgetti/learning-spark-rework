@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import Navbar from "@/layouts/Navbar";
 import Footer from "@/layouts/Footer";
 
+
 const Poppins = localFont({
   src: [
     { path: "./fonts/Poppins-Bold.ttf", weight: "800", style: "bold" },
@@ -90,7 +91,7 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html lang={locale}>
       <body className={`${Poppins.className} ${Manrope.className}`}>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages}>          
           <Navbar />
           {children}
           <Footer />

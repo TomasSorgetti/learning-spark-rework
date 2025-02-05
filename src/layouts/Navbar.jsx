@@ -5,9 +5,11 @@ import MainButton from "@/components/buttons/MainButton";
 import HamburgerButton from "@/components/buttons/HamburgerButton";
 import Logo from "@/components/icons/Logo";
 import LanguageChange from "@/components/locale/LanguageChange";
+import { LoadingBar, useLoadingBar } from "@/features/loadingBar";
 
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false);
+  const { progress, isLoading } = useLoadingBar();
 
   const toggleNavbar = () => {
     setShowNav(!showNav);
@@ -19,6 +21,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-white shadow-xl fixed top-0 z-50 w-full py-2 px-4">
+      <LoadingBar progress={progress} isLoading={isLoading} />
       <nav className="w-full max-w-[1440px] mx-auto flex justify-between items-center">
         <a className="z-50 text-gradient" href="#">
           <Logo size="sm" />

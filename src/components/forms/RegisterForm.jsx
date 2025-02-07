@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
-import { register } from "@/lib/api/auth";
+import { register } from "@/queries/auth";
 import {
   validateRegisterField,
   validateRegisterForm,

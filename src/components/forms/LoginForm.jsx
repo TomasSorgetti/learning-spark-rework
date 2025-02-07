@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { login } from "@/lib/api/auth";
+import { login } from "@/queries/auth";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 
 export default function LoginForm() {
@@ -50,6 +50,7 @@ export default function LoginForm() {
 
       console.log(response);
       resetForm();
+      localStorage.setItem("isAuthenticated", true);
       // navigate("/");
     } catch (error) {
       setError("Something went wrong.");

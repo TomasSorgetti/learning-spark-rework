@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { verifyEmail } from "@/lib/api/auth";
+import { verifyEmail } from "@/queries/auth";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import { usePathname, useRouter } from "next/navigation";
 import CodeVerification from "./inputs/CodeVerification";

@@ -1,14 +1,16 @@
 import axios from "axios";
+import { authInstance, axiosInstance } from "./axiosInstances";
 
-const BASE_URL = "http://localhost:8080/v1";
+axios.defaults.withCredentials = true;
 
 export const login = async ({ email, password, rememberme }) => {
   try {
-    const res = await axios.post(`${BASE_URL}/auth/signin`, {
+    const res = await authInstance.post("/auth/signin", {
       email,
       password,
       rememberme,
     });
+
     return res.data;
   } catch (error) {
     return {
@@ -20,7 +22,7 @@ export const login = async ({ email, password, rememberme }) => {
 
 export const register = async ({ name, email, password }) => {
   try {
-    const res = await axios.post(`${BASE_URL}/auth/signup`, {
+    const res = await authInstance.post(`/auth/signup`, {
       name,
       email,
       password,
@@ -36,7 +38,7 @@ export const register = async ({ name, email, password }) => {
 
 export const verifyEmail = async ({ userId, code }) => {
   try {
-    const res = await axios.patch(`${BASE_URL}/auth/verify`, {
+    const res = await axiosInstance.patch(`/auth/verify`, {
       userId,
       code,
     });
@@ -45,6 +47,21 @@ export const verifyEmail = async ({ userId, code }) => {
     return {
       error: true,
       message: error.response?.data?.message || "Error to verify email",
+    };
+  }
+};
+
+export const getProfile = async () => {
+  try {
+    const res = await axiosInstance.get(`/auth/me`, {
+      withCredentials: true,
+    });
+
+    return res.data;
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response?.data?.message || "Error to get profile",
     };
   }
 };

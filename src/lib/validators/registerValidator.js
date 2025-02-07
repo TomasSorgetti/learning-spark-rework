@@ -21,11 +21,11 @@ export const validateRegisterField = (name, value, t) => {
   }
 };
 
-export const validateRegisterForm = (form) => {
+export const validateRegisterForm = (form, t) => {
   const newErrors = {
-    name: validateRegisterField("name", form.name),
-    email: validateRegisterField("email", form.email),
-    password: validateRegisterField("password", form.password),
+    name: validateRegisterField("name", form.name, t),
+    email: validateRegisterField("email", form.email, t),
+    password: validateRegisterField("password", form.password, t),
   };
 
   return newErrors;

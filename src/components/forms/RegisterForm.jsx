@@ -9,13 +9,16 @@ import {
 } from "@/lib/validators/registerValidator";
 import { useTranslations } from "use-intl";
 import { usePathname, useRouter } from "next/navigation";
+import FormFieldInput from "./inputs/FormFieldInput";
 
 export default function RegisterForm() {
   const t = useTranslations("RegisterForm");
   const pathname = usePathname();
   const router = useRouter();
   const locale = pathname.split("/")[1];
-  const { startLoading, finishLoading } = useLoading();
+
+  const { startLoading, finishLoading, isLoading } = useLoading();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -57,8 +60,9 @@ export default function RegisterForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isLoading || !form.name || !form.email || !form.password) return;
 
-    const validationErrors = validateRegisterForm(form);
+    const validationErrors = validateRegisterForm(form, t);
 
     setError(validationErrors);
 
@@ -89,45 +93,45 @@ export default function RegisterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-gray-100">
-      <label>
-        <input
-          type="text"
-          placeholder={t("name.placeholder")}
-          name="name"
-          id="name"
-          value={form.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {error.name && <small className="text-red-500">{error.name}</small>}
-      </label>
-      <label>
-        <input
-          type="text"
-          placeholder={t("email.placeholder")}
-          name="email"
-          id="email"
-          value={form.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {error.email && <small className="text-red-500">{error.email}</small>}
-      </label>
-      <label>
-        <input
-          type="password"
-          name="password"
-          placeholder={t("password.placeholder")}
-          id="password"
-          value={form.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {error.password && (
-          <small className="text-red-500">{error.password}</small>
-        )}
-      </label>
+    <form onSubmit={handleSubmit} className="flex flex-col w-[400px]">
+      <FormFieldInput
+        label={t("name.label")}
+        type="text"
+        placeholder={t("name.placeholder")}
+        name="name"
+        id="name"
+        value={form.name}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        disabled={isLoading}
+        error={error.name}
+      />
+      <FormFieldInput
+        label={t("email.label")}
+        type="text"
+        placeholder={t("email.placeholder")}
+        name="email"
+        id="email"
+        value={form.email}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        disabled={isLoading}
+        error={error.email}
+      />
+      <FormFieldInput
+        label={t("password.label")}
+        type="password"
+        name="password"
+        placeholder={t("password.placeholder")}
+        id="password"
+        value={form.password}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        disabled={isLoading}
+        error={error.password}
+        isPassword
+      />
+
       <button type="submit" className="cursor-pointer bg-red-500 text-white">
         Register
       </button>

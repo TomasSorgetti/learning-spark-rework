@@ -4,19 +4,21 @@ import { useEffect, useState } from "react";
 import { verifyEmail } from "@/lib/api/auth";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import { usePathname, useRouter } from "next/navigation";
+import CodeVerification from "./inputs/CodeVerification";
+import ExpirationCodeCoundown from "../countdowns/ExpirationCodeCoundown";
 
 export default function VerifyEmailForm() {
   const pathname = usePathname();
   const router = useRouter();
   const locale = pathname.split("/")[1];
 
-  const [code, setCode] = useState("");
   const [userId, setUserId] = useState("");
   const [expiresIn, setExpiresIn] = useState(null);
   const [error, setError] = useState("");
 
-  const { startLoading, finishLoading } = useLoading();
+  const { startLoading, finishLoading, isLoading } = useLoading();
 
+  // Get user id and expires in
   useEffect(() => {
     const emailVerification = localStorage.getItem("emailVerification");
 
@@ -30,23 +32,16 @@ export default function VerifyEmailForm() {
     }
   }, []);
 
+  // check if code is expired
   useEffect(() => {
-    if (expiresIn && expiresIn <= 0) {
+    if (expiresIn !== null && expiresIn <= 0) {
       setError("The code has expired.");
     }
   }, [expiresIn]);
 
-  const handleChange = (e) => {
-    setCode(e.target.value);
-  };
-
-  const resetForm = () => {
-    setCode("");
-    setError("");
-  };
-
-  const handleSubmit = async () => {
-    if (expiresIn <= 0) {
+  const handleComplete = async (code) => {
+    if (isLoading || !code || !userId) return;
+    if (expiresIn !== null && expiresIn <= 0) {
       setError("The code has expired.");
       return;
     }
@@ -57,48 +52,51 @@ export default function VerifyEmailForm() {
         userId,
         code,
       });
+
+      console.log(response);
+
       if (response.error) {
-        setError("The code is invalid.");
-        console.log(response.message);
+        setError(response.message);
         return;
       }
-      resetForm();
+
       localStorage.removeItem("emailVerification");
-      console.log(response);
 
       router.push(`/${locale}/auth/login`);
     } catch (error) {
-      console.error(error);
+      console.log(error);
+
       setError("Something went wrong.");
     } finally {
       finishLoading();
     }
   };
 
-  const resendCode = async () => {};
+  const resendCode = async () => {
+    console.log("Resending verification code");
+  };
+
+  // TODO=> si esta cargando que no permita enviar el codigo
 
   return (
-    <>
-      <p>Expires in: {expiresIn}</p>
-      <form className="flex flex-col gap-4 bg-gray-100">
-        {error && <p className="text-red-500">{error}</p>}
-        <label>
-          <input
-            type="text"
-            placeholder="code"
-            name="code"
-            id="code"
-            value={code}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="button" onClick={handleSubmit}>
-          verify
-        </button>
-      </form>
-      <button type="button" onClick={resendCode}>
+    <section className="flex flex-col gap-8">
+      <ExpirationCodeCoundown
+        expiresIn={expiresIn}
+        setExpiresIn={setExpiresIn}
+      />
+
+      <div className="flex flex-col gap-4">
+        <p className="text-red-500 h-6">{error}</p>
+        <CodeVerification
+          length={6}
+          onComplete={handleComplete}
+          disabled={isLoading}
+        />
+      </div>
+
+      <button type="button" className="underline" onClick={resendCode}>
         resend verification code
       </button>
-    </>
+    </section>
   );
 }

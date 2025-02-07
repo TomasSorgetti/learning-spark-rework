@@ -47,7 +47,7 @@ export default function VerifyEmailForm() {
 
   const handleSubmit = async () => {
     if (expiresIn <= 0) {
-      setError("El código ha expirado.");
+      setError("The code has expired.");
       return;
     }
 
@@ -58,7 +58,7 @@ export default function VerifyEmailForm() {
         code,
       });
       if (response.error) {
-        setError(response.message);
+        setError("The code is invalid.");
         console.log(response.message);
         return;
       }

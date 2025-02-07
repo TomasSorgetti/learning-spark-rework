@@ -5,11 +5,14 @@ import MainButton from "@/components/buttons/MainButton";
 import HamburgerButton from "@/components/buttons/HamburgerButton";
 import Logo from "@/components/icons/Logo";
 import LanguageChange from "@/components/locale/LanguageChange";
-import { LoadingBar, useLoadingBar } from "@/features/loadingBar";
+import { useLoading } from "@/features/loadingBar/context/loadingContext";
+import LoadingBar from "@/features/loadingBar/components/LoadingBar";
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
+  const t = useTranslations("Navbar");
   const [showNav, setShowNav] = useState(false);
-  const { progress, isLoading } = useLoadingBar();
+  const { progress, isLoading } = useLoading();
 
   const toggleNavbar = () => {
     setShowNav(!showNav);
@@ -34,7 +37,7 @@ export default function Navbar() {
         >
           <li onClick={hideNavbar} className="flex items-center">
             <a href="#pricing" className="hover:text-secondary hover:font-bold">
-              Pricing
+              {t("Pricing")}
             </a>
           </li>
           <li onClick={hideNavbar} className="flex items-center">
@@ -42,19 +45,19 @@ export default function Navbar() {
               href="#coaching"
               className="hover:text-secondary hover:font-bold"
             >
-              Coaching
+              {t("Coaching")}
             </a>
           </li>
           <li onClick={hideNavbar} className="flex items-center">
             <a href="#about" className="hover:text-secondary hover:font-bold">
-              About Us
+              {t("About")}
             </a>
           </li>
           <li>
             <LanguageChange />
           </li>
           <li onClick={hideNavbar}>
-            <MainButton href="#contact">Book now</MainButton>
+            <MainButton href="#contact">{t("BookNow")}</MainButton>
           </li>
         </ul>
       </nav>

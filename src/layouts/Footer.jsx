@@ -2,9 +2,13 @@ import Logo from "@/components/icons/Logo";
 import TikTokIcon from "@/components/icons/TikTokIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import { constants } from "@/constants";
+import { useTranslations } from "next-intl";
 
-const Footer = ({ t }) => {
+const Footer = () => {
+  const t = useTranslations("Navbar");
+
   const whatsapp = "5491139478794";
+
   return (
     <section className="font-manrope px-4 sm:px-16 border-t-2">
       <article className="flex flex-col gap-6 pb-20 border-b-[1px] border-gray-300 lg:flex-row lg:justify-center lg:pb-24 lg:pt-4 lg:gap-12 xl:gap-20 3xl:justify-around">

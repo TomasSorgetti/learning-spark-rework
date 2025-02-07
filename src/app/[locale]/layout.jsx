@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/layouts/Navbar";
 import Footer from "@/layouts/Footer";
-
+import { LoadingProvider } from "@/features/loadingBar/context/loadingContext";
 
 const Poppins = localFont({
   src: [
@@ -91,10 +91,12 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html lang={locale}>
       <body className={`${Poppins.className} ${Manrope.className}`}>
-        <NextIntlClientProvider messages={messages}>          
-          <Navbar />
-          {children}
-          <Footer />
+        <NextIntlClientProvider messages={messages}>
+          <LoadingProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </LoadingProvider>
         </NextIntlClientProvider>
       </body>
     </html>

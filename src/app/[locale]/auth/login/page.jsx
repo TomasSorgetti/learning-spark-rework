@@ -1,6 +1,11 @@
-import LoginForm from "@/components/forms/LoginForm";
+"use server";
 
-export default function LoginPage() {
+import LoginForm from "@/components/forms/LoginForm";
+import { getTranslations } from "next-intl/server";
+
+export default async function LoginPage() {
+  const t = await getTranslations();
+
   return (
     <main className="min-h-screen flex flex-col items-center justify-center">
       <h1>Login Form</h1>

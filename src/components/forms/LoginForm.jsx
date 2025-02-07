@@ -1,37 +1,66 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
+import { login } from "@/lib/api/auth";
+import { useLoading } from "@/features/loadingBar/context/loadingContext";
 
 export default function LoginForm() {
+  const { startLoading, finishLoading } = useLoading();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
     rememberme: false,
   });
+  const [error, setError] = useState("");
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, type, checked, value } = e.target;
+
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const resetForm = () => {
     setForm({
-      ...form,
-      [name]: value,
+      email: "",
+      password: "",
+      rememberme: false,
     });
+  };
+  const handleBlur = (e) => {
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    await axios
-      .post("http://localhost:8080/v1/auth/signin", form)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
+    startLoading();
+
+    try {
+      const response = await login(form);
+
+      if (response.error) {
+        setError(response.message);
+        return;
+      }
+
+      console.log(response);
+      resetForm();
+      // navigate("/");
+    } catch (error) {
+      setError("Something went wrong.");
+    } finally {
+      finishLoading();
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-gray-100">
+      {error && <p className="text-red-500">{error}</p>}
       <label>
         <input
           type="email"
@@ -40,6 +69,7 @@ export default function LoginForm() {
           id="email"
           value={form.email}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
       </label>
       <label>
@@ -50,7 +80,17 @@ export default function LoginForm() {
           value={form.password}
           placeholder="Password"
           onChange={handleChange}
+          onBlur={handleBlur}
         />
+      </label>
+      <label className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          name="rememberme"
+          checked={form.rememberme}
+          onChange={handleChange}
+        />
+        Recordarme
       </label>
       <button type="submit" className="cursor-pointer bg-red-500 text-white">
         Login

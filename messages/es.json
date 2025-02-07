@@ -1,4 +1,10 @@
 {
+  "Navbar": {
+    "Pricing": "tarifas",
+    "About": "Sobre nosotros",
+    "Coaching": "Coaching",
+    "BookNow": "Reserva ahora"
+  },
   "HomePage": {
     "Banner": {
       "title": "Tutores Online Expertos para Exámenes, Ensayos y Evaluaciones del IB e IGCSE",
@@ -81,5 +87,51 @@
     "title": "Página no encontrada",
     "description": "La página que estás buscando no existe",
     "button": "Ir a la página de inicio"
+  },
+  "LoginForm": {
+    "email": {
+      "label": "Email:",
+      "placeholder": "ejemplo@.com"
+    },
+    "password": {
+      "label": "Contraseña:",
+      "placeholder": "********"
+    },
+    "validations": {}
+  },
+  "RegisterForm": {
+    "name": {
+      "label": "Nombre:",
+      "placeholder": "Juan Pérez"
+    },
+    "email": {
+      "label": "Email:",
+      "placeholder": "ejemplo@.com"
+    },
+    "password": {
+      "label": "Contraseña:",
+      "placeholder": "********"
+    },
+    "confirmPassword": {
+      "label": "Confirmar contraseña:",
+      "placeholder": "********"
+    },
+    "validations": {
+      "name": {
+        "required": "El nombre es obligatorio",
+        "minLength": "El nombre debe tener al menos 3 caracteres"
+      },
+      "email": {
+        "required": "El correo electrónico es obligatorio",
+        "invalid": "Formato de correo electrónico inválido"
+      },
+      "password": {
+        "required": "La contraseña es obligatoria",
+        "minLength": "La contraseña debe tener al menos 5 caracteres",
+        "maxLength": "La contraseña no debe exceder los 20 caracteres",
+        "pattern": "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial"
+      },
+      "confirmPassword": "Las contraseñas no coinciden"
+    }
   }
 }

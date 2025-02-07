@@ -1,4 +1,10 @@
 {
+  "Navbar": {
+    "Pricing": "Pricing",
+    "About": "About",
+    "Coaching": "Coaching",
+    "BookNow": "BookNow"
+  },
   "HomePage": {
     "Banner": {
       "title": "Expert Online Tutors for IB and IGCSE Exams, Essays and Assesments",
@@ -81,5 +87,51 @@
     "title": "Page not found",
     "description": "The page you are looking for does not exist",
     "button": "Go to the home page"
+  },
+  "LoginForm": {
+    "email": {
+      "label": "Email:",
+      "placeholder": "example@.com"
+    },
+    "password": {
+      "label": "Password:",
+      "placeholder": "********"
+    },
+    "validations": {}
+  },
+  "RegisterForm": {
+    "name": {
+      "label": "Name:",
+      "placeholder": "John Doe"
+    },
+    "email": {
+      "label": "Email:",
+      "placeholder": "example@.com"
+    },
+    "password": {
+      "label": "Password:",
+      "placeholder": "********"
+    },
+    "confirmPassword": {
+      "label": "Confirm Password:",
+      "placeholder": "********"
+    },
+    "validations": {
+      "name": {
+        "required": "Name is required",
+        "minLength": "Name must be at least 3 characters long"
+      },
+      "email": {
+        "required": "Email is required",
+        "invalid": "Invalid email format"
+      },
+      "password": {
+        "required": "Password is required",
+        "minLength": "Password must be at least 5 characters long",
+        "maxLength": "Password must not exceed 20 characters",
+        "pattern": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      },
+      "confirmPassword": "passwords does not match"
+    }
   }
 }

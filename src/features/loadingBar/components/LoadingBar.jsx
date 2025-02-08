@@ -1,4 +1,10 @@
-export default function LoadingBar({ progress, isLoading }) {
+"use client";
+
+import { useLoading } from "../context/loadingContext";
+
+export default function LoadingBar() {
+  const { progress, isLoading } = useLoading();
+
   return (
     isLoading && (
       <div

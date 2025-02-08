@@ -1,27 +1,25 @@
 "use client";
 
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
+import useAuthStore from "@/lib/store/authStore";
 import { getProfile } from "@/queries/auth";
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useEffect, useContext } from "react";
 
 const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
-
-  const { isLoading, startLoading, finishLoading } = useLoading();
+  const { setUser, setIsAuthenticated } = useAuthStore();
+  const { startLoading, finishLoading } = useLoading();
 
   const checkAuth = async () => {
+    startLoading();
     try {
-      startLoading();
       const response = await getProfile();
-      console.log(response);
+      console.log("RESPONSE:", response);
 
       if (response.error) {
         setIsAuthenticated(false);
       } else {
-        setIsAuthenticated(true);
         setUser(response);
       }
     } catch (error) {
@@ -32,23 +30,18 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const isAuthenticated = localStorage.getItem("isAuthenticated");
-    if (!isLoading && isAuthenticated) {
-      checkAuth();
-    }
+    checkAuth();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, checkAuth }}>
+    <AuthContext.Provider value={{ checkAuth }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// Hook para acceder al contexto
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context)
-    throw new Error("useAuth debe usarse dentro de un AuthProvider");
+  if (!context) throw new Error("useAuth must be used within a AuthProvider");
   return context;
 };

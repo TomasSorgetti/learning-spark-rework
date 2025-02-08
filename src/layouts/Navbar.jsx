@@ -6,13 +6,18 @@ import HamburgerButton from "@/components/buttons/HamburgerButton";
 import Logo from "@/components/icons/Logo";
 import LanguageChange from "@/components/locale/LanguageChange";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
-import LoadingBar from "@/features/loadingBar/components/LoadingBar";
+// import LoadingBar from "@/features/loadingBar/components/LoadingBar";
 import { useTranslations } from "next-intl";
+import useAuthStore from "@/lib/store/authStore";
+import { logoutSession } from "@/queries/auth";
+import { Link, useRouter } from "@/i18n/routing";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
+  const { locale } = useRouter();
+  const { logout, session, isAuthenticated } = useAuthStore();
   const [showNav, setShowNav] = useState(false);
-  const { progress, isLoading } = useLoading();
+  const { startLoading, finishLoading } = useLoading();
 
   const toggleNavbar = () => {
     setShowNav(!showNav);
@@ -22,9 +27,21 @@ export default function Navbar() {
     setShowNav(false);
   };
 
+  const handleLogout = async () => {
+    try {
+      startLoading();
+      logout();
+      const response = await logoutSession(session.id);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      finishLoading();
+    }
+  };
   return (
     <header className="bg-white shadow-xl fixed top-0 z-50 w-full py-2 px-4">
-      <LoadingBar progress={progress} isLoading={isLoading} />
+      {/* <LoadingBar progress={progress} isLoading={isLoading} /> */}
       <nav className="w-full max-w-[1440px] mx-auto flex justify-between items-center">
         <a className="z-50 text-gradient" href="#">
           <Logo size="sm" />
@@ -52,6 +69,15 @@ export default function Navbar() {
             <a href="#about" className="hover:text-secondary hover:font-bold">
               {t("About")}
             </a>
+          </li>
+          <li>
+            {isAuthenticated ? (
+              <button onClick={handleLogout}>Logout</button>
+            ) : (
+              <Link href="/auth/login" locale={locale}>
+                Sign in
+              </Link>
+            )}
           </li>
           <li>
             <LanguageChange />

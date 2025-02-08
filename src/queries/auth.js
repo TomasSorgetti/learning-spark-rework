@@ -65,3 +65,21 @@ export const getProfile = async () => {
     };
   }
 };
+
+export const logoutSession = async (sessionId) => {
+  try {
+    const res = await axiosInstance.post(
+      `/auth/logout?sessionId=${sessionId}`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    return res.data;
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response?.data?.message || "Error to get profile",
+    };
+  }
+};

@@ -3,9 +3,16 @@
 import { useState } from "react";
 import { login } from "@/queries/auth";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
+import useAuthStore from "@/lib/store/authStore";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const locale = pathname.split("/")[1];
+
   const { startLoading, finishLoading } = useLoading();
+  const { setUser, setSession } = useAuthStore();
 
   const [form, setForm] = useState({
     email: "",
@@ -43,15 +50,18 @@ export default function LoginForm() {
     try {
       const response = await login(form);
 
+      console.log(response);
+
       if (response.error) {
         setError(response.message);
         return;
       }
 
-      console.log(response);
       resetForm();
-      localStorage.setItem("isAuthenticated", true);
-      // navigate("/");
+      setUser(response.user);
+      setSession(response.session);
+
+      router.push(`/${locale}`);
     } catch (error) {
       setError("Something went wrong.");
     } finally {

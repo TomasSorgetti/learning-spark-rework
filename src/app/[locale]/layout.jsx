@@ -8,6 +8,7 @@ import Navbar from "@/layouts/Navbar";
 import Footer from "@/layouts/Footer";
 import { LoadingProvider } from "@/features/loadingBar/context/loadingContext";
 import { AuthProvider } from "@/context/AuthContext";
+import LoadingBar from "@/features/loadingBar/components/LoadingBar";
 
 const Poppins = localFont({
   src: [
@@ -92,15 +93,16 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html lang={locale}>
       <body className={`${Poppins.className} ${Manrope.className}`}>
-        <NextIntlClientProvider messages={messages}>
-          <LoadingProvider>
+        <LoadingProvider>
+          <NextIntlClientProvider messages={messages}>
             <AuthProvider>
               <Navbar />
+              <LoadingBar />
               {children}
               <Footer />
             </AuthProvider>
-          </LoadingProvider>
-        </NextIntlClientProvider>
+          </NextIntlClientProvider>
+        </LoadingProvider>
       </body>
     </html>
   );

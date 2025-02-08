@@ -3,7 +3,7 @@
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import useAuthStore from "@/lib/store/authStore";
 import useUserStore from "@/lib/store/userStore";
-import { getProfile } from "@/queries/auth";
+import { getProfile, logoutSession } from "@/queries/auth";
 import { createContext, useEffect, useContext } from "react";
 
 const AuthContext = createContext(undefined);
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
       const response = await getProfile();
 
       if (response.error) {
-        setIsAuthenticated(false);
+        throw new Error(response.message);
       } else {
         setUser(response);
         response.roles.forEach((role) => {
@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       setIsAuthenticated(false);
+      await logoutSession();
     } finally {
       finishLoading();
     }

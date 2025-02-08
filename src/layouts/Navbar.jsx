@@ -7,10 +7,12 @@ import Logo from "@/components/icons/Logo";
 import LanguageChange from "@/components/locale/LanguageChange";
 import { useTranslations } from "next-intl";
 import AuthSelector from "@/components/auth/AuthSelector";
+import { useRouter } from "@/i18n/routing";
+import ResoursesDropdown from "@/components/resourses/ResoursesDropdown";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
-  
+  const { locale } = useRouter();
   const [showNav, setShowNav] = useState(false);
 
   const toggleNavbar = () => {
@@ -46,10 +48,13 @@ export default function Navbar() {
               {t("Coaching")}
             </a>
           </li>
-          <li onClick={hideNavbar} className="flex items-center">
+          {/* <li onClick={hideNavbar} className="flex items-center">
             <a href="#about" className="hover:text-secondary hover:font-bold">
               {t("About")}
             </a>
+          </li> */}
+          <li>
+            <ResoursesDropdown />
           </li>
           <li>
             <AuthSelector t={t} />

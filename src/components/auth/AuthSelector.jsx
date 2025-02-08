@@ -7,7 +7,7 @@ import useAuthStore from "@/lib/store/authStore";
 import useUserStore from "@/lib/store/userStore";
 import { logoutSession } from "@/queries/auth";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function AuthSelector({ t }) {
   const { locale } = useRouter();
@@ -15,7 +15,12 @@ export default function AuthSelector({ t }) {
   const { isAdmin } = useUserStore();
   const { startLoading, finishLoading } = useLoading();
   const [showMenu, setShowMenu] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const closeDropdown = () => {
     setShowMenu(false);
@@ -37,6 +42,8 @@ export default function AuthSelector({ t }) {
       finishLoading();
     }
   };
+
+  if (!hydrated) return null;
 
   return (
     <>

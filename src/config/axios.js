@@ -35,17 +35,13 @@ const authInterceptor = (axiosInstance) => {
         isRefreshing = true;
 
         try {
-          await axiosInstance.get("/auth/refresh");
+          const rememberme = localStorage.getItem("rememberme");
+
+          await axiosInstance.get("/auth/refresh?rememberme=" + rememberme);
           processQueue(null);
           return axiosInstance(originalRequest);
         } catch (refreshError) {
           processQueue(refreshError);
-          document.cookie =
-            "accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-          document.cookie =
-            "refreshToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-
-          window.location.href = "/auth/login";
           return Promise.reject(refreshError);
         } finally {
           isRefreshing = false;

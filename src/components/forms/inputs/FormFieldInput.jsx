@@ -19,7 +19,7 @@ export default function FormFieldInput({
 
   return (
     <div className="flex flex-col relative w-full mb-6 max-w-[500px]">
-      <label htmlFor={id} className="font-medium text-gray-700">
+      <label htmlFor={id} className="text-sm font-semibold text-secondary">
         {label}
       </label>
       <div className="relative">

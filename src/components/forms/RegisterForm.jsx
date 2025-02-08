@@ -132,7 +132,10 @@ export default function RegisterForm() {
         isPassword
       />
 
-      <button type="submit" className="cursor-pointer bg-red-500 text-white">
+      <button
+        type="submit"
+        className="cursor-pointer bg-red-500 text-white mt-6 py-3 rounded-full transition-all duration-500 hover:bg-red-600"
+      >
         Register
       </button>
     </form>

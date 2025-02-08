@@ -5,6 +5,7 @@ import { login } from "@/queries/auth";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import useAuthStore from "@/lib/store/authStore";
 import { usePathname, useRouter } from "next/navigation";
+import useUserStore from "@/lib/store/userStore";
 
 export default function LoginForm() {
   const pathname = usePathname();
@@ -12,7 +13,8 @@ export default function LoginForm() {
   const locale = pathname.split("/")[1];
 
   const { startLoading, finishLoading } = useLoading();
-  const { setUser, setSession } = useAuthStore();
+  const { setIsAuthenticated } = useAuthStore();
+  const { setUser, setIsAdmin } = useUserStore();
 
   const [form, setForm] = useState({
     email: "",
@@ -58,11 +60,19 @@ export default function LoginForm() {
       }
 
       resetForm();
-      setUser(response.user);
-      setSession(response.session);
+      setUser(response);
+      setIsAuthenticated(true);
+
+      response.roles.forEach((role) => {
+        if (role.name === "admin") {
+          setIsAdmin(true);
+        }
+      });
 
       router.push(`/${locale}`);
     } catch (error) {
+      console.log(error);
+
       setError("Something went wrong.");
     } finally {
       finishLoading();

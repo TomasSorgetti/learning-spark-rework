@@ -66,14 +66,11 @@ export const getProfile = async () => {
   }
 };
 
-export const logoutSession = async (sessionId) => {
+export const logoutSession = async () => {
   try {
-    const res = await axiosInstance.post(
-      `/auth/logout?sessionId=${sessionId}`,
-      {
-        withCredentials: true,
-      }
-    );
+    const res = await axiosInstance.post(`/auth/logout`, {
+      withCredentials: true,
+    });
 
     return res.data;
   } catch (error) {

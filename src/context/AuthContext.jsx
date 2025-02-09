@@ -9,8 +9,8 @@ import { createContext, useEffect, useContext } from "react";
 const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({ children }) => {
-  const { setIsAuthenticated, isAuthenticated } = useAuthStore();
-  const { setUser, setIsAdmin } = useUserStore();
+  const { setIsAuthenticated, isAuthenticated, setIsAdmin } = useAuthStore();
+  const { setUser, user } = useUserStore();
   const { isLoading, startLoading, finishLoading } = useLoading();
 
   const checkAuth = async () => {
@@ -21,12 +21,12 @@ export const AuthProvider = ({ children }) => {
       if (response.error) {
         throw new Error(response.message);
       } else {
-        setUser(response);
         response.roles.forEach((role) => {
           if (role.name === "admin") {
             setIsAdmin(true);
           }
         });
+        setUser(response);
       }
     } catch (error) {
       setIsAuthenticated(false);
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (isAuthenticated && !isLoading) {
+    if (isAuthenticated && !isLoading && !user) {
       checkAuth();
     }
   }, [isAuthenticated]);

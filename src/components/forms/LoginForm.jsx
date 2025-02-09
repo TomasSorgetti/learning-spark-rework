@@ -14,8 +14,8 @@ export default function LoginForm() {
   const locale = pathname.split("/")[1];
 
   const { isLoading, startLoading, finishLoading } = useLoading();
-  const { setIsAuthenticated } = useAuthStore();
-  const { setUser, setIsAdmin } = useUserStore();
+  const { setIsAuthenticated, setIsAdmin } = useAuthStore();
+  const { setUser } = useUserStore();
 
   const [form, setForm] = useState({
     email: "",
@@ -34,7 +34,7 @@ export default function LoginForm() {
       }));
     }
   }, []);
-  
+
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
 

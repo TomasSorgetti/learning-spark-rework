@@ -14,7 +14,7 @@ import {
 import { Link, useRouter } from "@/i18n/routing";
 
 export default function AdminBar() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const { locale } = useRouter();
 
   const toggleCollapsed = () => {
@@ -23,7 +23,7 @@ export default function AdminBar() {
 
   return (
     <aside
-      className={`bg-secondary py-32 px-6 h-full absolute top-0 left-0 transform transition-all duration-500 ease-in-out ${
+      className={`bg-secondary py-32 px-6 h-full transform transition-all duration-500 ease-in-out ${
         collapsed ? "w-[220px]" : "w-[80px]"
       }`}
     >

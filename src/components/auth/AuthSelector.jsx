@@ -4,15 +4,13 @@ import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import useClickOutside from "@/hooks/useClickOutside";
 import { Link, useRouter } from "@/i18n/routing";
 import useAuthStore from "@/lib/store/authStore";
-import useUserStore from "@/lib/store/userStore";
 import { logoutSession } from "@/queries/auth";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function AuthSelector({ t }) {
   const { locale } = useRouter();
-  const { isAuthenticated, cleanAuth } = useAuthStore();
-  const { isAdmin } = useUserStore();
+  const { isAuthenticated, cleanAuth, isAdmin } = useAuthStore();
   const { startLoading, finishLoading } = useLoading();
   const [showMenu, setShowMenu] = useState(false);
   const [hydrated, setHydrated] = useState(false);

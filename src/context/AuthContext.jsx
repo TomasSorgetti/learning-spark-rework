@@ -18,6 +18,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await getProfile();
 
+      console.log("Auth Provider: ", response);
+
       if (response.error) {
         throw new Error(response.message);
       } else {
@@ -37,10 +39,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (isAuthenticated && !isLoading && !user) {
+    if ((isAuthenticated && !isLoading) || (!user && isAuthenticated)) {
+      console.log("Ejecutando checkAuth()");
       checkAuth();
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user]);
 
   return (
     <AuthContext.Provider value={{ checkAuth }}>

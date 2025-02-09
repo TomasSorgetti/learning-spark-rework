@@ -10,9 +10,7 @@ const useAuthStore = create(
       setIsAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
       cleanAuth: () => set({ isAuthenticated: false }),
     }),
-    {
-      name: "auth-storage",
-    }
+    { name: "auth-storage", getStorage: () => localStorage }
   )
 );
 

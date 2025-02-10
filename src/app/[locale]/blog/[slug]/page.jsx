@@ -1,4 +1,4 @@
-import { getPostBySlug } from "@/queries/blog";
+import { getPostBySlug } from "@/lib/queries/blog";
 
 export default async function PostPage({ params }) {
   const { slug } = await params;

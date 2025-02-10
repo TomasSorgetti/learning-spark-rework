@@ -1,5 +1,5 @@
 import MainButton from "@/components/buttons/MainButton";
-import { constants } from "@/constants";
+import { constants } from "@/lib/constants";
 import Image from "next/image";
 
 export default function Coaching({ t }) {

@@ -2,8 +2,9 @@
 
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import useUserStore from "@/lib/store/userStore";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormFieldInput from "../forms/inputs/FormFieldInput";
+import { changePassword } from "@/lib/queries/users";
 
 export default function ProfileInfo() {
   const { user } = useUserStore();
@@ -12,6 +13,7 @@ export default function ProfileInfo() {
     password: "",
     newPassword: "",
   });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,14 +23,27 @@ export default function ProfileInfo() {
     });
   };
 
-  const handleBlur = (e) => {};
-  const handleSubmit = (e) => {
+  const resetForm = (e) => {
+    setForm({
+      password: "",
+      newPassword: "",
+    });
+  };
+
+  const handleChangePassword = async (e) => {
     e.preventDefault();
+    setError("");
     startLoading();
     try {
-      console.log("change password...");
+      await changePassword(form);
+      resetForm();
+      setError("");
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        setError(error.response?.data?.message || "Error to change Password");
+      } else {
+        setError(error.message || "Unknown error");
+      }
     } finally {
       finishLoading();
     }
@@ -37,7 +52,10 @@ export default function ProfileInfo() {
   return (
     <section className="flex flex-col gap-4 w-full">
       <h1 className="text-4xl">Profile Information</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-[300px]">
+      <form
+        onSubmit={handleChangePassword}
+        className="flex flex-col gap-4 max-w-[300px]"
+      >
         <span>Name: {user?.name}</span>
         <span>Email: {user?.email}</span>
         <p>
@@ -55,7 +73,6 @@ export default function ProfileInfo() {
             id="profile-password"
             value={form.password}
             onChange={handleChange}
-            onBlur={handleBlur}
             disabled={isLoading}
             isPassword
           />
@@ -67,18 +84,22 @@ export default function ProfileInfo() {
             id="profile-new-password"
             value={form.newPassword}
             onChange={handleChange}
-            onBlur={handleBlur}
             disabled={isLoading}
             isPassword
           />
         </div>
         <button
           type="submit"
-          className="cursor-pointer bg-red-500 text-white py-3 rounded-full transition-all duration-500 hover:bg-red-600"
+          className={`${
+            isLoading
+              ? "pointer-events-none opacity-50"
+              : "cursor-pointer hover:bg-red-600"
+          }  bg-red-500 text-white py-3 rounded-full transition-all duration-500`}
           disabled={isLoading}
         >
           {isLoading ? "Loading..." : "Update password"}
         </button>
+        {<p className="text-red-500">{error}</p>}
       </form>
     </section>
   );

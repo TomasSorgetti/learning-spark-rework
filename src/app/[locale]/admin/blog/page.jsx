@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/routing";
-import { getAllPosts } from "@/queries/blog";
+import { getAllPosts } from "@/lib/queries/blog";
 
 export default async function AdminBlog() {
   const posts = (await getAllPosts()) || [];

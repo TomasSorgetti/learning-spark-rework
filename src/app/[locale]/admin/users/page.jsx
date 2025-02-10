@@ -1,7 +1,7 @@
 "use client";
 
 import useUsersStore from "@/lib/store/usersStore";
-import { getAllUsers } from "@/queries/users";
+import { getAllUsers } from "@/lib/queries/users";
 import { useEffect } from "react";
 
 export default function AdminUsers() {

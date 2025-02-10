@@ -1,4 +1,4 @@
-import { constants } from "@/constants";
+import { constants } from "@/lib/constants";
 import Image from "next/image";
 
 export default function WhatsappButton() {

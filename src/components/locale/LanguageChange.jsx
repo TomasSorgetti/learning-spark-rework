@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import LanguageIcon from "../icons/LanguageIcon";
-import useClickOutside from "@/hooks/useClickOutside";
+import useClickOutside from "@/lib/hooks/useClickOutside";
 import { Link } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { verifyEmail } from "@/queries/auth";
+import { verifyEmail, resendCode } from "@/lib/queries/auth";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import { usePathname, useRouter } from "next/navigation";
 import CodeVerification from "./inputs/CodeVerification";
@@ -53,8 +53,6 @@ export default function VerifyEmailForm() {
         code,
       });
 
-      console.log(response);
-
       if (response.error) {
         setError(response.message);
         return;
@@ -64,19 +62,26 @@ export default function VerifyEmailForm() {
 
       router.push(`/${locale}/auth/login`);
     } catch (error) {
-      console.log(error);
-
       setError("Something went wrong.");
     } finally {
       finishLoading();
     }
   };
 
-  const resendCode = async () => {
-    console.log("Resending verification code");
-  };
+  const resendVerificationCode = async () => {
+    if (!userId) return;
+    try {
+      startLoading();
 
-  // TODO=> si esta cargando que no permita enviar el codigo
+      const response = await resendCode(userId);
+
+      console.log("response:", response);
+    } catch (error) {
+      console.log("error:", error);
+    } finally {
+      finishLoading();
+    }
+  };
 
   return (
     <section className="flex flex-col gap-8">
@@ -94,7 +99,12 @@ export default function VerifyEmailForm() {
         />
       </div>
 
-      <button type="button" className="underline" onClick={resendCode}>
+      <button
+        type="button"
+        className="underline"
+        onClick={resendVerificationCode}
+        disabled={isLoading}
+      >
         resend verification code
       </button>
     </section>

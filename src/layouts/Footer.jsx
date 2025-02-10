@@ -1,7 +1,7 @@
 import Logo from "@/components/icons/Logo";
 import TikTokIcon from "@/components/icons/TikTokIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
-import { constants } from "@/constants";
+import { constants } from "@/lib/constants";
 import { useTranslations } from "next-intl";
 
 const Footer = () => {

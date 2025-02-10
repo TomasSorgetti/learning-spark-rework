@@ -50,6 +50,20 @@ export const verifyEmail = async ({ userId, code }) => {
     };
   }
 };
+export const resendCode = async (userId) => {
+  try {
+    const res = await axiosInstance.patch(`/auth/resend-code`, {
+      userId,
+    });
+
+    return res.data;
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response?.data?.message || "Error to resend code",
+    };
+  }
+};
 
 export const getProfile = async () => {
   try {

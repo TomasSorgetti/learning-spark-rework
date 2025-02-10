@@ -1,5 +1,5 @@
 import axios from "axios";
-import authInterceptor from "@/config/axios";
+import authInterceptor from "@/lib/config/axios";
 
 const BASE_URL = "http://localhost:8080/v1";
 

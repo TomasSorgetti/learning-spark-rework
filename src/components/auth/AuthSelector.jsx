@@ -1,10 +1,10 @@
 "use client";
 
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
-import useClickOutside from "@/hooks/useClickOutside";
+import useClickOutside from "@/lib/hooks/useClickOutside";
 import { Link, useRouter } from "@/i18n/routing";
 import useAuthStore from "@/lib/store/authStore";
-import { logoutSession } from "@/queries/auth";
+import { logoutSession } from "@/lib/queries/auth";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 

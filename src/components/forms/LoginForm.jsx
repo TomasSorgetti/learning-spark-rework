@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { login } from "@/queries/auth";
+import { login } from "@/lib/queries/auth";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import useAuthStore from "@/lib/store/authStore";
 import { usePathname, useRouter } from "next/navigation";
@@ -85,8 +85,6 @@ export default function LoginForm() {
 
       router.push(`/${locale}`);
     } catch (error) {
-      console.log(error);
-
       setError("Something went wrong.");
     } finally {
       finishLoading();
@@ -131,7 +129,9 @@ export default function LoginForm() {
       </label>
       <button
         type="submit"
-        className="cursor-pointer bg-red-500 text-white mt-6 py-3 rounded-full transition-all duration-500 hover:bg-red-600"
+        className={`cursor-pointer bg-red-500 ${
+          isLoading ? "pointer-events-none opacity-50" : "hover:bg-red-600"
+        } text-white mt-6 py-3 rounded-full transition-all duration-500`}
       >
         Login
       </button>

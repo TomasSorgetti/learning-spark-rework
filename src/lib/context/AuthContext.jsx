@@ -3,7 +3,7 @@
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import useAuthStore from "@/lib/store/authStore";
 import useUserStore from "@/lib/store/userStore";
-import { getProfile, logoutSession } from "@/queries/auth";
+import { getProfile, logoutSession } from "@/lib/queries/auth";
 import { createContext, useEffect, useContext } from "react";
 
 const AuthContext = createContext(undefined);
@@ -17,8 +17,6 @@ export const AuthProvider = ({ children }) => {
     startLoading();
     try {
       const response = await getProfile();
-
-      console.log("Auth Provider: ", response);
 
       if (response.error) {
         throw new Error(response.message);

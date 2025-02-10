@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
-import { register } from "@/queries/auth";
+import { register } from "@/lib/queries/auth";
 import {
   validateRegisterField,
   validateRegisterForm,
@@ -73,7 +73,6 @@ export default function RegisterForm() {
     try {
       const response = await register(form);
       if (response.error) {
-        console.log(response.message);
         return;
       }
       resetForm();
@@ -134,7 +133,11 @@ export default function RegisterForm() {
 
       <button
         type="submit"
-        className="cursor-pointer bg-red-500 text-white mt-6 py-3 rounded-full transition-all duration-500 hover:bg-red-600"
+        className={`${
+          isLoading
+            ? "pointer-events-none opacity-50"
+            : "cursor-pointer hover:bg-red-600"
+        }  bg-red-500 text-white py-3 rounded-full transition-all duration-500`}
       >
         Register
       </button>

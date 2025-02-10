@@ -1,7 +1,7 @@
 "use client";
-import useClickOutside from "@/hooks/useClickOutside";
+import useClickOutside from "@/lib/hooks/useClickOutside";
 import { useEffect, useRef, useState } from "react";
-import { subjects } from "@/data/subjects";
+import { subjects } from "@/lib/data/subjects";
 
 export default function ResoursesDropdown() {
   const [showMenu, setShowMenu] = useState(false);

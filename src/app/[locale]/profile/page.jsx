@@ -4,7 +4,7 @@ import ProfileInfo from "@/components/forms/ProfileInfo";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import AuthGuard from "@/layouts/guards/AuthGuard";
 import useSessionStore from "@/lib/store/sessionStore";
-import { getAllSessions, deleteSession } from "@/queries/sessions";
+import { getAllSessions, deleteSession } from "@/lib/queries/sessions";
 import { useEffect } from "react";
 
 export default function ProfilePage() {
@@ -32,8 +32,7 @@ export default function ProfilePage() {
     startLoading();
     try {
       const response = await deleteSession(sessionId);
-      // TODO => refresh sessions state
-      console.log(response);
+
       if (response.error) throw new Error(response.message);
       setSessions((prevSessions) =>
         prevSessions.filter((session) => session._id !== sessionId)

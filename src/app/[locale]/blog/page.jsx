@@ -1,5 +1,5 @@
 import { BlogPosts } from "@/components/blog/BlogPosts";
-import { getAllPosts } from "@/queries/blog";
+import { getAllPosts } from "@/lib/queries/blog";
 
 export default async function BlogsPage() {
   const posts = (await getAllPosts()) || [];

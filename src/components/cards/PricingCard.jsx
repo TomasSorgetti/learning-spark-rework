@@ -1,6 +1,6 @@
 import CardButton from "../buttons/CardButton";
 import CheckIcon from "../icons/CheckIcon";
-import { constants } from "@/constants";
+import { constants } from "@/lib/constants";
 
 export default function PricingCard({
   id,

@@ -66,7 +66,7 @@ export default function AuthSelector({ t }) {
             }`}
           >
             {isAdmin && (
-              <li className="flex items-center">
+              <li onClick={closeDropdown} className="flex items-center">
                 <Link
                   href="/admin"
                   locale={locale}
@@ -76,7 +76,7 @@ export default function AuthSelector({ t }) {
                 </Link>
               </li>
             )}
-            <li className="flex items-center">
+            <li onClick={closeDropdown} className="flex items-center">
               <Link
                 href="/profile"
                 locale={locale}
@@ -85,7 +85,7 @@ export default function AuthSelector({ t }) {
                 Profile
               </Link>
             </li>
-            <li className="flex items-center">
+            <li onClick={closeDropdown} className="flex items-center">
               <button
                 className="hover:text-secondary hover:font-bold"
                 onClick={handleLogout}

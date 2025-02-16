@@ -48,17 +48,17 @@ export default function Navbar() {
               {t("Coaching")}
             </a>
           </li>
-          {/* <li onClick={hideNavbar} className="flex items-center">
+          <li onClick={hideNavbar} className="flex items-center">
             <a href="#about" className="hover:text-secondary hover:font-bold">
               {t("About")}
             </a>
-          </li> */}
-          <li>
+          </li>
+          {/* <li>
             <ResoursesDropdown />
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <AuthSelector t={t} />
-          </li>
+          </li> */}
           <li>
             <LanguageChange />
           </li>

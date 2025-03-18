@@ -39,6 +39,15 @@ export default function TextEditor({ form, setForm, error, disabled, onBlur }) {
     immediatelyRender: false,
   });
 
+  useEffect(() => {
+    if (!editor || !isMounted) return;
+
+    const currentEditorContent = editor.getHTML();
+    if (form.content !== currentEditorContent) {
+      editor.commands.setContent(form.content || "");
+    }
+  }, [editor, form.content, isMounted]);
+
   if (!isMounted || !editor) {
     return <div>Cargando editor...</div>;
   }

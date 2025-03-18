@@ -12,6 +12,7 @@ import {
 } from "../../lib/validators/PostValidation";
 import { useSubjects } from "@/hooks/useSubjects";
 import SubjectSelector from "./inputs/SubjectSelector";
+import { createPost } from "@/lib/queries/blog";
 
 export default function CreatePostForm() {
   const { isLoading, startLoading, finishLoading } = useLoading();
@@ -81,7 +82,7 @@ export default function CreatePostForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validatePostForm(form);
     setError(errors);
@@ -108,9 +109,23 @@ export default function CreatePostForm() {
     formData.append("url", form.url);
     formData.append("author", form.author);
     formData.append("tags", form.tags);
-    formData.append("subject", form.subject);
+    formData.append("subjectId", form.subject);
 
     try {
+      const res = await createPost(formData);
+      console.log(res);
+      if (res.error) {
+        throw new Error(res.message);
+      }
+      setForm({
+        title: "",
+        content: "",
+        image: null,
+        url: "",
+        author: "",
+        tags: "",
+        subject: "",
+      });
     } catch (error) {
       console.log(error.message);
     } finally {

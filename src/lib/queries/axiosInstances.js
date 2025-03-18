@@ -19,4 +19,12 @@ export const axiosInstance = axios.create({
   },
 });
 
+export const formInstance = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
+
 authInterceptor(axiosInstance);

@@ -1,4 +1,4 @@
-import MainButton from "@/components/buttons/MainButton";
+import MainButton from "@/components/ui/buttons/MainButton";
 import { getTranslations } from "next-intl/server";
 
 export default async function NotFound() {

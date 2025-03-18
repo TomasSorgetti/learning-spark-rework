@@ -1,6 +1,6 @@
-import Logo from "@/components/icons/Logo";
-import TikTokIcon from "@/components/icons/TikTokIcon";
-import InstagramIcon from "@/components/icons/InstagramIcon";
+import Logo from "@/components/ui/icons/Logo";
+import TikTokIcon from "@/components/ui/icons/TikTokIcon";
+import InstagramIcon from "@/components/ui/icons/InstagramIcon";
 import { constants } from "@/lib/constants";
 import { useTranslations } from "next-intl";
 

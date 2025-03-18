@@ -1,6 +1,6 @@
 "use server";
 
-import LoginForm from "@/components/forms/LoginForm";
+import LoginForm from "@/components/ui/forms/LoginForm";
 import { getTranslations } from "next-intl/server";
 
 export default async function LoginPage() {

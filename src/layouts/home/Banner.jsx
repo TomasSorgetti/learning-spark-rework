@@ -1,4 +1,4 @@
-import MainButton from "@/components/buttons/MainButton";
+import MainButton from "@/components/ui/buttons/MainButton";
 
 export default async function HomeBanner({ t }) {
   return (

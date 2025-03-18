@@ -4,7 +4,7 @@ import Pricing from "@/layouts/home/Pricing";
 import GroupClass from "@/layouts/home/GroupClass";
 import Contact from "@/layouts/home/Contact";
 import Coaching from "@/layouts/home/Coaching";
-import WhatsappButton from "@/components/buttons/WhatsappButton";
+import WhatsappButton from "@/components/ui/buttons/WhatsappButton";
 import About from "@/layouts/home/About";
 
 export async function generateMetadata({ params, searchParams }, parent) {

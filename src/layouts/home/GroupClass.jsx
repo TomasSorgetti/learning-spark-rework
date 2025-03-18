@@ -1,4 +1,4 @@
-import MainButton from "@/components/buttons/MainButton";
+import MainButton from "@/components/ui/buttons/MainButton";
 import { constants } from "@/lib/constants";
 import Image from "next/image";
 

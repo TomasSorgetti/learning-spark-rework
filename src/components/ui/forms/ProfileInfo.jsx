@@ -3,7 +3,7 @@
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import useUserStore from "@/lib/store/userStore";
 import { useState } from "react";
-import FormFieldInput from "../forms/inputs/FormFieldInput";
+import FormFieldInput from "./inputs/FormFieldInput";
 import { changePassword } from "@/lib/queries/users";
 
 export default function ProfileInfo() {

@@ -1,5 +1,5 @@
-import MailIcon from "@/components/icons/MailIcon";
-import WhatsappIcon from "@/components/icons/WhatsappIcon";
+import MailIcon from "@/components/ui/icons/MailIcon";
+import WhatsappIcon from "@/components/ui/icons/WhatsappIcon";
 import { constants } from "@/lib/constants";
 import Image from "next/image";
 

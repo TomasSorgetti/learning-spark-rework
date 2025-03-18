@@ -5,11 +5,11 @@ import FormFieldInput from "./inputs/FormFieldInput";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import ImageInput from "./inputs/ImageInput";
 import PostInput from "./inputs/PostInput";
-import TextEditor from "@/components/textEditor/TextEditor";
+import TextEditor from "@/components/ui/textEditor/TextEditor";
 import {
   ValidatePost,
   validatePostForm,
-} from "../../lib/validators/PostValidation";
+} from "../../../lib/validators/PostValidation";
 import { useSubjects } from "@/hooks/useSubjects";
 import SubjectSelector from "./inputs/SubjectSelector";
 import { createPost } from "@/lib/queries/blog";
@@ -96,7 +96,8 @@ export default function CreatePostForm() {
       !form.image ||
       !form.url ||
       !form.author ||
-      !form.tags
+      !form.tags ||
+      !form.subject
     )
       return;
 

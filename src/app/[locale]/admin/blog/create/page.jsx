@@ -1,4 +1,4 @@
-import CreatePostForm from "@/components/forms/CreatePostForm";
+import CreatePostForm from "@/components/ui/forms/CreatePostForm";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const locale = (await params).locale;

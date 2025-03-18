@@ -1,6 +1,6 @@
 "use client";
 
-import ProfileInfo from "@/components/forms/ProfileInfo";
+import ProfileInfo from "@/components/ui/forms/ProfileInfo";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import AuthGuard from "@/layouts/guards/AuthGuard";
 import useSessionStore from "@/lib/store/sessionStore";

@@ -1,3 +1,4 @@
+import BlogRow from "@/components/ui/tables/BlogRow";
 import { Link } from "@/i18n/routing";
 import { getAllPosts } from "@/lib/queries/blog";
 
@@ -24,18 +25,22 @@ export default async function AdminBlog() {
   const posts = (await getAllPosts()) || [];
 
   return (
-    <section className="h-screen flex flex-col items-start px-20 justify-center gap-4 text-secondary">
+    <section className="h-screen w-full flex flex-col items-start px-20 justify-center gap-4 text-secondary">
       <h1 className="text-3xl font-bold">Admin Blog</h1>
-      <div>
+      <div className="flex justify-between w-full">
         <input type="text" placeholder="Search" />
-        <Link href="/admin/blog/create">Create Blog</Link>
+        <Link
+          href="/admin/blog/create"
+          className="p-2 bg-secondary text-white rounded"
+        >
+          Create Blog
+        </Link>
       </div>
-      {posts.map((post) => (
-        <div key={post._id}>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-        </div>
-      ))}
+      <div className="w-full flex flex-col gap-1 overflow-y-scroll">
+        {posts.map((post) => (
+          <BlogRow key={post._id} {...post} subject={post.subjectId.name} />
+        ))}
+      </div>
     </section>
   );
 }

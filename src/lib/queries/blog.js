@@ -6,17 +6,36 @@ export const getAllPosts = async () => {
 
     return res.data;
   } catch (error) {
-    return [];
+    return {
+      error: true,
+      message: error.response?.data?.message || "Error to get posts",
+    };
   }
 };
 
 export const getPostBySlug = async (slug) => {
   try {
-    const res = await authInstance.get(`/blog/${slug}`);
+    const res = await authInstance.get(`/blog/post/${slug}`);
 
     return res.data;
   } catch (error) {
-    return {};
+    return {
+      error: true,
+      message: error.response?.data?.message || "Error to get post",
+    };
+  }
+};
+
+export const getTopViewedPosts = async () => {
+  try {
+    const res = await authInstance.get(`/blog/top-viewed`);
+
+    return res.data;
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response?.data?.message || "Error to get top viewed posts",
+    };
   }
 };
 

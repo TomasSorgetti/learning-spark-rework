@@ -5,7 +5,7 @@ import FormFieldInput from "./inputs/FormFieldInput";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import ImageInput from "./inputs/ImageInput";
 import PostInput from "./inputs/PostInput";
-// import TextEditor from "../textEditor/TextEditor";
+import TextEditor from "@/components/textEditor/TextEditor";
 
 export default function CreatePostForm() {
   const { isLoading } = useLoading();
@@ -44,6 +44,12 @@ export default function CreatePostForm() {
           onChange={handleChange}
           value={form.title}
           onBlur={handleBlur}
+          disabled={isLoading}
+        />
+        <TextEditor
+          form={form}
+          setForm={setForm}
+          error={false}
           disabled={isLoading}
         />
       </div>

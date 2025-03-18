@@ -36,8 +36,8 @@ export default function Navbar() {
           } lg:relative lg:w-auto lg:bg-transparent lg:h-auto lg:flex-row lg:gap-8 lg:translate-x-0 `}
         >
           <li onClick={hideNavbar} className="flex items-center">
-            <a href="#pricing" className="hover:text-secondary hover:font-bold">
-              {t("Pricing")}
+            <a href="#" className="hover:text-secondary hover:font-bold">
+              Home
             </a>
           </li>
           <li onClick={hideNavbar} className="flex items-center">
@@ -45,20 +45,15 @@ export default function Navbar() {
               href="#coaching"
               className="hover:text-secondary hover:font-bold"
             >
-              {t("Coaching")}
+              Blog
             </a>
           </li>
-          <li onClick={hideNavbar} className="flex items-center">
-            <a href="#about" className="hover:text-secondary hover:font-bold">
-              {t("About")}
-            </a>
-          </li>
-          {/* <li>
+          <li>
             <ResoursesDropdown />
-          </li> */}
-          {/* <li>
+          </li>
+          <li>
             <AuthSelector t={t} />
-          </li> */}
+          </li>
           <li>
             <LanguageChange />
           </li>

@@ -1,4 +1,4 @@
-import PricingCard from "@/components/cards/PricingCard";
+import PricingCard from "@/components/ui/cards/PricingCard";
 
 export default async function Pricing({ t }) {
   const miArr = [

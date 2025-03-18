@@ -9,6 +9,7 @@ import Footer from "@/layouts/Footer";
 import { LoadingProvider } from "@/features/loadingBar/context/loadingContext";
 import { AuthProvider } from "@/lib/context/AuthContext";
 import LoadingBar from "@/features/loadingBar/components/LoadingBar";
+import { ToastProvider } from "@/features/toast/ToastContext";
 
 const Poppins = localFont({
   src: [
@@ -98,7 +99,7 @@ export default async function LocaleLayout({ children, params }) {
             <AuthProvider>
               <Navbar />
               <LoadingBar />
-              {children}
+              <ToastProvider>{children}</ToastProvider>
               <Footer />
             </AuthProvider>
           </NextIntlClientProvider>

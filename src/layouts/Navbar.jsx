@@ -4,7 +4,7 @@ import { useState } from "react";
 import MainButton from "@/components/ui/buttons/MainButton";
 import HamburgerButton from "@/components/ui/buttons/HamburgerButton";
 import Logo from "@/components/ui/icons/Logo";
-import LanguageChange from "@/components/locale/LanguageChange";
+import LanguageChange from "@/components/ui/locale/LanguageChange";
 import { useTranslations } from "next-intl";
 import AuthSelector from "@/components/auth/AuthSelector";
 import { useRouter } from "@/i18n/routing";

@@ -13,8 +13,10 @@ import {
 import { useSubjects } from "@/hooks/useSubjects";
 import SubjectSelector from "./inputs/SubjectSelector";
 import { createPost } from "@/lib/queries/blog";
+import { useToastContext } from "@/features/toast/ToastContext";
 
 export default function CreatePostForm() {
+  const { addToast } = useToastContext();
   const { isLoading, startLoading, finishLoading } = useLoading();
   const {
     subjects,
@@ -96,8 +98,7 @@ export default function CreatePostForm() {
       !form.image ||
       !form.url ||
       !form.author ||
-      !form.tags ||
-      !form.subject
+      !form.tags
     )
       return;
 
@@ -118,6 +119,7 @@ export default function CreatePostForm() {
       if (res.error) {
         throw new Error(res.message);
       }
+      addToast("Post created successfully", "success");
       setForm({
         title: "",
         content: "",
@@ -128,6 +130,7 @@ export default function CreatePostForm() {
         subject: "",
       });
     } catch (error) {
+      addToast("Error to create post", "error");
       console.log(error.message);
     } finally {
       finishLoading();

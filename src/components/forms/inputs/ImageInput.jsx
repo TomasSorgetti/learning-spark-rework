@@ -1,29 +1,14 @@
-import { useState } from "react";
-
 export default function ImageInput({
   id,
   label,
-  type = "text",
-  placeholder = "",
   name,
-  value = "",
   disabled = false,
   onChange,
+  onBlur,
   error,
+  fileName = "",
   ...props
 }) {
-  const [fileName, setFileName] = useState("");
-
-  const handleChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFileName(file.name);
-    }
-    if (onChange) {
-      onChange(e);
-    }
-  };
-
   return (
     <div className="flex flex-col relative w-full mb-6 max-w-[500px]">
       <label htmlFor={id} className="text-sm font-semibold text-secondary">
@@ -35,7 +20,8 @@ export default function ImageInput({
         accept="image/*"
         name={name}
         className="border border-gray-300 rounded-md p-2"
-        onChange={handleChange}
+        onChange={onChange}
+        onBlur={onBlur}
         disabled={disabled}
         {...props}
       />

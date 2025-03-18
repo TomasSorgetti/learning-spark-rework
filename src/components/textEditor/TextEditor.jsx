@@ -6,7 +6,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Italic, Quote, ListOrdered, List } from "lucide-react";
 
-export default function TextEditor({ form, setForm, error, disabled }) {
+export default function TextEditor({ form, setForm, error, disabled, onBlur }) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -23,13 +23,18 @@ export default function TextEditor({ form, setForm, error, disabled }) {
         },
       }),
     ],
-    content: form.content || "", // Contenido inicial vacío si no hay form.content
-    editable: true,
+    content: form.content || "",
+    editable: !disabled,
     onUpdate: ({ editor }) => {
       setForm((prevForm) => ({
         ...prevForm,
         content: editor.getHTML(),
       }));
+    },
+    onBlur: ({ editor }) => {
+      if (onBlur) {
+        onBlur({ target: { name: "content", value: editor.getHTML() } });
+      }
     },
     immediatelyRender: false,
   });
@@ -65,6 +70,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
         }}
       >
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={
             disabled || !editor.can().chain().focus().toggleBold().run()
@@ -81,6 +87,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
           B
         </button>
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={
             disabled || !editor.can().chain().focus().toggleItalic().run()
@@ -97,6 +104,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
         </button>
 
         <button
+          type="button"
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 2 }).run()
           }
@@ -117,6 +125,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
           H2
         </button>
         <button
+          type="button"
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 3 }).run()
           }
@@ -137,6 +146,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
           H3
         </button>
         <button
+          type="button"
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 4 }).run()
           }
@@ -157,6 +167,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
           H4
         </button>
         <button
+          type="button"
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 5 }).run()
           }
@@ -177,6 +188,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
           H5
         </button>
         <button
+          type="button"
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 6 }).run()
           }
@@ -198,6 +210,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
         </button>
 
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           disabled={
             disabled || !editor.can().chain().focus().toggleBulletList().run()
@@ -213,6 +226,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
           <List />
         </button>
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           disabled={
             disabled || !editor.can().chain().focus().toggleOrderedList().run()
@@ -228,6 +242,7 @@ export default function TextEditor({ form, setForm, error, disabled }) {
           <ListOrdered />
         </button>
         <button
+          type="button"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           disabled={
             disabled || !editor.can().chain().focus().toggleBlockquote().run()
@@ -261,10 +276,11 @@ export default function TextEditor({ form, setForm, error, disabled }) {
             outline: "none",
             boxSizing: "border-box",
             minHeight: "200px",
-            background: disabled ? "#f5f5f5" : "white", // Opcional: fondo grisáceo
+            background: disabled ? "#f5f5f5" : "white",
           }}
         />
       </div>
+      {error && <span className="text-sm text-red-500 mt-1">{error}</span>}
     </div>
   );
 }

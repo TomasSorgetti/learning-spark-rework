@@ -1,5 +1,5 @@
 "use client";
-import useClickOutside from "@/lib/hooks/useClickOutside";
+import useClickOutside from "@/lib/utils/useClickOutside";
 import { useEffect, useRef, useState } from "react";
 import { subjects } from "@/lib/data/subjects";
 

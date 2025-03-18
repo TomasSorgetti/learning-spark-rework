@@ -1,7 +1,7 @@
 "use client";
 
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
-import useClickOutside from "@/lib/hooks/useClickOutside";
+import useClickOutside from "@/lib/utils/useClickOutside";
 import { Link, useRouter } from "@/i18n/routing";
 import useAuthStore from "@/lib/store/authStore";
 import { logoutSession } from "@/lib/queries/auth";

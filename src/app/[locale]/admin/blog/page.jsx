@@ -1,6 +1,25 @@
 import { Link } from "@/i18n/routing";
 import { getAllPosts } from "@/lib/queries/blog";
 
+export async function generateMetadata({ params, searchParams }, parent) {
+  const locale = (await params).locale;
+
+  const metadata = {
+    en: {
+      title: "Admin Blog - Learning Spark",
+    },
+    es: {
+      title: "Admin Blog - Learning Spark",
+    },
+  };
+
+  const selectedMetadata = metadata[locale] || metadata.en;
+
+  return {
+    title: selectedMetadata.title,
+  };
+}
+
 export default async function AdminBlog() {
   const posts = (await getAllPosts()) || [];
 

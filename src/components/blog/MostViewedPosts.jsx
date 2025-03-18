@@ -23,12 +23,14 @@ export function MostViewedPosts({ posts = [] }) {
           const formatedDate = formatDate(post.createdAt);
 
           return (
-            <SwiperSlide key={post._id} className="relative">
+            <SwiperSlide key={post._id} className="relative cursor-grab">
               <Image
                 src="/images/placeholder.png"
                 alt={post.title}
                 width={313}
                 height={200}
+                draggable={false}
+                loading="eager"
                 className="absolute object-cover w-full h-full filter brightness-[30%] z-[-1]"
               />
               <div className="h-[400px] w-full flex flex-col items-center justify-center gap-4">

@@ -8,8 +8,6 @@ export default async function BlogsPage() {
     getTopViewedPosts(),
   ]);
 
-  console.log(topPosts);
-
   return (
     <main className="min-h-screen flex flex-col items-center justify-center">
       <h1>Blogs Page</h1>

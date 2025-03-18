@@ -6,9 +6,17 @@ import BlogPostCard from "../ui/cards/BlogPostCard";
 
 export function BlogPosts({ posts = [] }) {
   return (
-    <div>
-      <h2>Blog Posts</h2>
-      <div className="flex gap-3 justify-start max-w-[1000px] flex-wrap">
+    <section>
+      <div className="my-20">
+        <h2 className="text-center font-bold text-[38px] mb-6 max-w-[600px] mx-auto">
+          Guides and Tips for Your IB and IGCSE Exams
+        </h2>
+        <p className="max-w-[600px] mx-auto text-center">
+          Explore expert articles with practical guides and study tips to excel
+          in your IB and IGCSE exams, tailored for your success!
+        </p>
+      </div>
+      <div className="flex gap-3 my-10 justify-start max-w-[1000px] flex-wrap">
         {posts?.map((post) => {
           const plainTextContent = htmlToText(post.content, {
             wordwrap: false,
@@ -31,6 +39,6 @@ export function BlogPosts({ posts = [] }) {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }

@@ -14,10 +14,10 @@ export default function BlogPostCard({
     image.trim() === "" || !image ? "/images/placeholder.png" : image;
 
   return (
-    <div className="flex flex-col gap-4 max-w-[313px] w-full h-[476px] bg-white border border-[1px]-gray rounded-[20px] shadow-md">
+    <div className="flex flex-col gap-4 max-w-[313px] w-full h-[476px] bg-white border border-[1px]-gray rounded-[10px] shadow-md">
       {/* Image */}
       <div className="relative overflow-hidden h-[200px]">
-        <div className="absolute top-0 left-0 p-4 z-10 flex flex-col items-start gap-2">
+        <div className="absolute top-0 left-0 p-4 z-10 flex flex-col items-start gap-2 text-white">
           <span>By {author}</span>
           <p>{createdAt}</p>
         </div>
@@ -29,7 +29,7 @@ export default function BlogPostCard({
           height={200}
           draggable={false}
           loading="lazy"
-          className="rounded-[20px] object-cover"
+          className="rounded-[10px] object-cover"
         />
       </div>
       {/* content */}

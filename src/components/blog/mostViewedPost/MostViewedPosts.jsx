@@ -1,19 +1,32 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import MainButton from "../ui/buttons/MainButton";
 import { htmlToText } from "html-to-text";
 import { cutText } from "@/lib/utils/cutText";
 import { formatDate } from "@/lib/utils/formatDate";
+import NextButton from "./buttons/NextButton";
+import PrevButton from "./buttons/PrevButton";
+import CustomDots from "./buttons/CustomDots";
 
 export function MostViewedPosts({ posts = [] }) {
   if (!posts) return null;
 
   return (
     <section className="mt-16 w-full">
-      <Swiper spaceBetween={0} slidesPerView={1} loop>
+      <Swiper
+        spaceBetween={0}
+        slidesPerView={1}
+        loop
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+      >
         {posts.map((post) => {
           const plainTextContent = htmlToText(post.content, {
             wordwrap: false,
@@ -48,13 +61,21 @@ export function MostViewedPosts({ posts = [] }) {
                 <p className="text-white text-center max-w-[500px]">
                   {previewText}
                 </p>
-                <MainButton href={`/blog/${post.url}`} className="mt-4">
+                <Link
+                  href={`/blog/${post.url}`}
+                  className="mt-4 bg-primary cursor-pointer text-center transition-all duration-500 hover:bg-alter3 focus:bg-alter4 hover:shadow-lg px-6 py-2 text-white rounded-full font-semibold text-[18px]"
+                >
                   Read more
-                </MainButton>
+                </Link>
               </div>
             </SwiperSlide>
           );
         })}
+
+        <PrevButton />
+        <NextButton />
+
+        <CustomDots totalSlides={posts.length} />
       </Swiper>
     </section>
   );

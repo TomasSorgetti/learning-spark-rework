@@ -1,5 +1,5 @@
 import { BlogPosts } from "@/components/blog/BlogPosts";
-import { MostViewedPosts } from "@/components/blog/MostViewedPosts";
+import { MostViewedPosts } from "@/components/blog/mostViewedPost/MostViewedPosts";
 import { getAllPosts, getTopViewedPosts } from "@/lib/queries/blog";
 
 export default async function BlogsPage() {

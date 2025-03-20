@@ -21,8 +21,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
   };
 }
 
-export default async function AdminBlog() {
-  const posts = (await getAllPosts()) || [];
+export default async function AdminBlog({ searchParams }) {
+  const page = parseInt(searchParams?.page) || 1;
+  const limit = 9;
+  const blog = (await getAllPosts({ page, limit })) || [];
 
   return (
     <section className="h-screen w-full flex flex-col items-start px-20 justify-center gap-4 text-secondary">
@@ -37,7 +39,7 @@ export default async function AdminBlog() {
         </Link>
       </div>
       <div className="w-full flex flex-col gap-1 overflow-y-scroll">
-        {posts.map((post) => (
+        {blog.posts.map((post) => (
           <BlogRow key={post._id} {...post} subject={post.subjectId.name} />
         ))}
       </div>

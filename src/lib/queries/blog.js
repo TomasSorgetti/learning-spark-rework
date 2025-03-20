@@ -1,8 +1,8 @@
 import { authInstance, formInstance } from "./axiosInstances";
 
-export const getAllPosts = async () => {
+export const getAllPosts = async ({ page = 1, limit = 10 }) => {
   try {
-    const res = await authInstance.get("/blog");
+    const res = await authInstance.get(`/blog?page=${page}&limit=${limit}`);
 
     return res.data;
   } catch (error) {

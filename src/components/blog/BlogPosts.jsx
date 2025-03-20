@@ -2,12 +2,14 @@ import { formatDate } from "@/lib/utils/formatDate";
 import { cutText } from "@/lib/utils/cutText";
 import { htmlToText } from "html-to-text";
 import BlogPostCard from "../ui/cards/BlogPostCard";
+import BlogPagination from "../ui/pagination/BlogPagination";
 
-export function BlogPosts({ posts = { posts: [], total: 0 } }) {
-  console.log(posts);
+export function BlogPosts({ posts, currentPage, totalPosts }) {
+  const postsPerPage = 9;
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   return (
-    <section>
+    <section className="w-full">
       <div className="my-20">
         <h2 className="text-center font-bold text-[38px] mb-6 max-w-[600px] mx-auto">
           Guides and Tips for Your IB and IGCSE Exams
@@ -17,13 +19,15 @@ export function BlogPosts({ posts = { posts: [], total: 0 } }) {
           in your IB and IGCSE exams, tailored for your success!
         </p>
       </div>
-      <div className="flex gap-3 my-10 justify-start max-w-[1000px] flex-wrap">
-        {posts.posts.length === 0 ? (
+
+      {/* Posts */}
+      <div className="flex gap-3 my-10 justify-start w-full max-w-[1000px] mx-auto flex-wrap">
+        {posts.length === 0 ? (
           <span className="text-center font-bold text-[38px] mb-6 max-w-[600px] mx-auto">
             No posts found
           </span>
         ) : (
-          posts.posts.map((post) => {
+          posts.map((post) => {
             const plainTextContent = htmlToText(post.content, {
               wordwrap: false,
               tags: { p: { behavior: "text" } },
@@ -46,6 +50,8 @@ export function BlogPosts({ posts = { posts: [], total: 0 } }) {
           })
         )}
       </div>
+
+      <BlogPagination currentPage={currentPage} totalPages={totalPages} />
     </section>
   );
 }

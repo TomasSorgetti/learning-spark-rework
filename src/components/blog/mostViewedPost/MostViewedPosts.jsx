@@ -15,7 +15,7 @@ export function MostViewedPosts({ posts = [] }) {
   if (!posts) return null;
 
   return (
-    <section className="mt-16 w-full">
+    <section className="mt-14 w-full">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}

@@ -29,8 +29,15 @@ export const AuthProvider = ({ children }) => {
         setUser(response);
       }
     } catch (error) {
-      setIsAuthenticated(false);
-      await logoutSession();
+      // TODO => manage when server is down and user logout (sessions will not be deleted, but user will not be authenticated)
+      await logoutSession().then((res) => {
+        if (!res.error) {
+          setIsAuthenticated(false);
+          setIsAdmin(false);
+        } else {
+          console.log("Server is down");
+        }
+      });
     } finally {
       finishLoading();
     }
@@ -38,7 +45,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if ((isAuthenticated && !isLoading) || (!user && isAuthenticated)) {
-      console.log("Ejecutando checkAuth()");
       checkAuth();
     }
   }, [isAuthenticated, user]);

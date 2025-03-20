@@ -7,7 +7,7 @@ import { routing } from "@/i18n/routing";
 import Navbar from "@/layouts/Navbar";
 import Footer from "@/layouts/Footer";
 import { LoadingProvider } from "@/features/loadingBar/context/loadingContext";
-import { AuthProvider } from "@/lib/context/AuthContext";
+import { AuthProvider } from "@/context/AuthContext";
 import LoadingBar from "@/features/loadingBar/components/LoadingBar";
 import { ToastProvider } from "@/features/toast/ToastContext";
 

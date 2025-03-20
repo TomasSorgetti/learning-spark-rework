@@ -7,6 +7,7 @@ import useAuthStore from "@/lib/store/authStore";
 import { usePathname, useRouter } from "next/navigation";
 import useUserStore from "@/lib/store/userStore";
 import FormFieldInput from "./inputs/FormFieldInput";
+import GoogleButton from "../buttons/GoogleButton";
 
 export default function LoginForm() {
   const pathname = usePathname();
@@ -93,6 +94,8 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-[400px]">
+      <GoogleButton />
+      <p className="text-center">or</p>
       {error && <p className="text-red-500">{error}</p>}
       <FormFieldInput
         label="Email:"

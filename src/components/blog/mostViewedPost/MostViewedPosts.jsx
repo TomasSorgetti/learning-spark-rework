@@ -44,6 +44,7 @@ export function MostViewedPosts({ posts = [] }) {
                 height={200}
                 draggable={false}
                 loading="eager"
+                priority
                 className="absolute object-cover w-full h-full filter brightness-[30%] z-[-1]"
               />
               <div className="h-[400px] w-full flex flex-col items-center justify-center gap-4">

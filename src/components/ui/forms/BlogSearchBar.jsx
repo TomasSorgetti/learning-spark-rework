@@ -8,8 +8,6 @@ import { useSubjects } from "@/hooks/useSubjects";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 
 export default function BlogSearchBar({ search: initialSearch = "" }) {
-  const { startLoading, finishLoading } = useLoading();
-
   const router = useRouter();
   const {
     subjects,
@@ -31,7 +29,6 @@ export default function BlogSearchBar({ search: initialSearch = "" }) {
   };
 
   useEffect(() => {
-    startLoading();
     const delayDebounce = setTimeout(() => {
       const searchParam = filter.search
         ? `&search=${encodeURIComponent(filter.search)}`
@@ -40,7 +37,6 @@ export default function BlogSearchBar({ search: initialSearch = "" }) {
         filter.subject !== "none" ? `&subject=${filter.subject}` : "";
 
       if (filter.search !== initialSearch || filter.subject !== "none") {
-        finishLoading();
         router.push(`/blog?page=1${searchParam}${subjectParam}`);
       }
     }, 500);

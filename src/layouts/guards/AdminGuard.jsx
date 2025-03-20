@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import useAuthStore from "@/lib/store/authStore";
+import { useRouter } from "@/i18n/routing";
 
 export default function AdminGuard({ children }) {
   const [isHydrated, setIsHydrated] = useState(false);

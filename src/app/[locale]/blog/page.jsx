@@ -17,9 +17,11 @@ export async function generateMetadata({ params, searchParams }) {
 }
 
 export default async function BlogsPage({ searchParams }) {
-  const pageParam = (await searchParams?.page) ?? "1";
-  const search = (await searchParams?.search) ?? "";
-  const subject = (await searchParams?.subject) ?? "all";
+  const resolvedSearchParams = await searchParams;
+
+  const pageParam = resolvedSearchParams?.page ?? "1";
+  const search = resolvedSearchParams?.search ?? "";
+  const subject = resolvedSearchParams?.subject ?? "all";
   const page = parseInt(pageParam, 10) || 1;
   const limit = 9;
 
@@ -28,17 +30,8 @@ export default async function BlogsPage({ searchParams }) {
     getTopViewedPosts(),
   ]);
 
-  if (!blog) {
-    return (
-      <main className="min-h-screen flex flex-col items-center justify-center">
-        <h1>Error to get posts</h1>
-      </main>
-    );
-  }
-
   return (
     <main className="min-h-screen flex flex-col items-center justify-center">
-      <h1>Blogs Page</h1>
       <MostViewedPosts posts={topPosts} />
       <BlogPosts
         posts={blog.posts}

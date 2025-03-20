@@ -8,7 +8,7 @@ export default async function LoginPage() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center">
-      <h1>Login Form</h1>
+      <h1 className="text-[42px]">Sign In</h1>
       <LoginForm />
     </main>
   );

@@ -7,9 +7,10 @@ import {
   validateRegisterField,
   validateRegisterForm,
 } from "@/lib/validators/registerValidator";
-import { useTranslations } from "use-intl";
 import { usePathname, useRouter } from "next/navigation";
 import FormFieldInput from "./inputs/FormFieldInput";
+import { useTranslations } from "next-intl";
+import GoogleButton from "../buttons/GoogleButton";
 
 export default function RegisterForm() {
   const t = useTranslations("RegisterForm");
@@ -93,6 +94,8 @@ export default function RegisterForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-[400px]">
+      <GoogleButton />
+      <p className="text-center">or</p>
       <FormFieldInput
         label={t("name.label")}
         type="text"

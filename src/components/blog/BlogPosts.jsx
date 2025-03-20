@@ -12,9 +12,9 @@ export function BlogPosts({ posts, currentPage, totalPosts, search }) {
   return (
     <section className="w-full">
       <div className="my-20">
-        <h2 className="text-center font-bold text-[38px] mb-6 max-w-[600px] mx-auto">
+        <h1 className="text-center font-bold text-[38px] mb-6 max-w-[600px] mx-auto">
           Guides and Tips for Your IB and IGCSE Exams
-        </h2>
+        </h1>
         <p className="max-w-[600px] mx-auto text-center">
           Explore expert articles with practical guides and study tips to excel
           in your IB and IGCSE exams, tailored for your success!

@@ -51,10 +51,6 @@ export function MostViewedPosts({ posts = [] }) {
                   <span className="w-[13px] h-[13px] rounded-full bg-alter2"></span>
                   {post.subjectId.name}
                 </span>
-                <span className="text-white flex items-center gap-2">
-                  <span className="font-bold">{post.author}</span>
-                  {formatedDate}
-                </span>
                 <span className="text-white font-bold text-center max-w-[600px] text-[36px]">
                   {post.title}
                 </span>

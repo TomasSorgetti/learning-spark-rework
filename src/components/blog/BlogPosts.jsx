@@ -3,8 +3,9 @@ import { cutText } from "@/lib/utils/cutText";
 import { htmlToText } from "html-to-text";
 import BlogPostCard from "../ui/cards/BlogPostCard";
 import BlogPagination from "../ui/pagination/BlogPagination";
+import BlogSearchBar from "../ui/forms/BlogSearchBar";
 
-export function BlogPosts({ posts, currentPage, totalPosts }) {
+export function BlogPosts({ posts, currentPage, totalPosts, search }) {
   const postsPerPage = 9;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
@@ -20,8 +21,10 @@ export function BlogPosts({ posts, currentPage, totalPosts }) {
         </p>
       </div>
 
+      {/* Search */}
+      <BlogSearchBar search={search} />
       {/* Posts */}
-      <div className="flex gap-3 my-10 justify-start w-full max-w-[1000px] mx-auto flex-wrap">
+      <div className="flex gap-3 my-10 justify-center w-full max-w-[1000px] mx-auto flex-wrap lg:justify-start">
         {posts.length === 0 ? (
           <span className="text-center font-bold text-[38px] mb-6 max-w-[600px] mx-auto">
             No posts found

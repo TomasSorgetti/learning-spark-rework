@@ -6,8 +6,8 @@ import HamburgerButton from "@/components/ui/buttons/HamburgerButton";
 import Logo from "@/components/ui/icons/Logo";
 import LanguageChange from "@/components/ui/locale/LanguageChange";
 import { useTranslations } from "next-intl";
-import AuthSelector from "@/components/auth/AuthSelector";
-import { useRouter } from "@/i18n/routing";
+// import AuthSelector from "@/components/auth/AuthSelector";
+import { Link, useRouter } from "@/i18n/routing";
 import ResoursesDropdown from "@/components/resourses/ResoursesDropdown";
 
 export default function Navbar() {
@@ -26,9 +26,9 @@ export default function Navbar() {
   return (
     <header className="bg-white shadow-xl fixed top-0 z-50 w-full py-2 px-4">
       <nav className="w-full max-w-[1440px] mx-auto flex justify-between items-center">
-        <a className="z-50 text-gradient" href="#">
+        <Link className="z-50 text-gradient" href="/#">
           <Logo size="sm" />
-        </a>
+        </Link>
         <HamburgerButton handleClick={toggleNavbar} />
         <ul
           className={`bg-white h-[100vh] w-full absolute top-0 left-0 flex flex-col items-center justify-center gap-6 transform transition-transform duration-500 ease-in-out ${
@@ -36,24 +36,21 @@ export default function Navbar() {
           } lg:relative lg:w-auto lg:bg-transparent lg:h-auto lg:flex-row lg:gap-8 lg:translate-x-0 `}
         >
           <li onClick={hideNavbar} className="flex items-center">
-            <a href="#" className="hover:text-secondary hover:font-bold">
+            <Link href="/#" className="hover:text-secondary hover:font-bold">
               Home
-            </a>
+            </Link>
           </li>
           <li onClick={hideNavbar} className="flex items-center">
-            <a
-              href="#coaching"
-              className="hover:text-secondary hover:font-bold"
-            >
+            <Link href="/blog?page=1" className="hover:text-secondary hover:font-bold">
               Blog
-            </a>
+            </Link>
           </li>
           <li>
             <ResoursesDropdown />
           </li>
-          <li>
+          {/* <li>
             <AuthSelector t={t} />
-          </li>
+          </li> */}
           <li>
             <LanguageChange />
           </li>

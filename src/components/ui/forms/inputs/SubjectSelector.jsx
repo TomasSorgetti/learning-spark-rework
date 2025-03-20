@@ -15,7 +15,7 @@ export default function SubjectSelector({
   ...props
 }) {
   return (
-    <div className="flex flex-col w-full mb-6">
+    <div className="flex flex-col w-full mb-6 max-w-[300px]">
       <label htmlFor={id} className="text-sm font-semibold text-secondary">
         {label}
       </label>

@@ -8,7 +8,7 @@ import LanguageChange from "@/components/ui/locale/LanguageChange";
 import { useTranslations } from "next-intl";
 import AuthSelector from "@/components/auth/AuthSelector";
 import { Link } from "@/i18n/routing";
-import ResoursesDropdown from "@/components/resourses/ResoursesDropdown";
+import ResoursesDropdown from "@/components/ui/dropdowns/ResoursesDropdown";
 import useAuthStore from "@/lib/store/authStore";
 
 export default function Navbar() {
@@ -53,7 +53,7 @@ export default function Navbar() {
             <ResoursesDropdown />
           </li> */}
           {/* TODO => Remove isAdmin when needs */}
-          {isAdmin && isAuthenticated && (
+          {isAuthenticated && (
             <li>
               <AuthSelector t={t} />
             </li>

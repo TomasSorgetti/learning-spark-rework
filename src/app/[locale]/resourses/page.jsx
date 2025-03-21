@@ -1,6 +1,6 @@
 "use server";
 
-import ResoursesBanner from "@/layouts/resourses/ResoursesBanner";
+import ResoursesBanner from "@/components/resourses/ResoursesBanner";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({ params, searchParams }, parent) {

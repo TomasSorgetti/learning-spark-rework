@@ -1,5 +1,5 @@
 import AdminBar from "@/layouts/AdminBar";
-import AdminGuard from "@/layouts/guards/AdminGuard";
+import AdminGuard from "@/lib/guards/AdminGuard";
 
 export default async function AdminLayout({ children }) {
   return (

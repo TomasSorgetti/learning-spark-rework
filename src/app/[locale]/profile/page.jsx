@@ -2,7 +2,7 @@
 
 import ProfileInfo from "@/components/ui/forms/ProfileInfo";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
-import AuthGuard from "@/layouts/guards/AuthGuard";
+import AuthGuard from "@/lib/guards/AuthGuard";
 import useSessionStore from "@/lib/store/sessionStore";
 import { getAllSessions, deleteSession } from "@/lib/queries/sessions";
 import { useEffect } from "react";

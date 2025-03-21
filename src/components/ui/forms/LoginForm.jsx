@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { login } from "@/lib/queries/auth";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import useAuthStore from "@/lib/store/authStore";
@@ -9,7 +9,7 @@ import useUserStore from "@/lib/store/userStore";
 import FormFieldInput from "./inputs/FormFieldInput";
 import GoogleButton from "../buttons/GoogleButton";
 
-export default function LoginForm() {
+export default function LoginForm({ loginSuccess, loginError }) {
   const pathname = usePathname();
   const router = useRouter();
   const locale = pathname.split("/")[1];
@@ -24,6 +24,17 @@ export default function LoginForm() {
     rememberme: false,
   });
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (loginSuccess) {
+      setIsAuthenticated(true);
+      router.push(`/${locale}`);
+    }
+
+    if (loginError) {
+      setError(loginError);
+    }
+  }, [loginSuccess, loginError]);
 
   useEffect(() => {
     const rememberme = localStorage.getItem("rememberme");
@@ -94,9 +105,9 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-[400px]">
+      {error && <p className="text-red-500 text-center">{error}</p>}
       <GoogleButton />
       <p className="text-center">or</p>
-      {error && <p className="text-red-500">{error}</p>}
       <FormFieldInput
         label="Email:"
         type="text"

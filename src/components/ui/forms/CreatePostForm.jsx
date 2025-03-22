@@ -214,7 +214,7 @@ export default function CreatePostForm() {
         <FormFieldInput
           label="Tags:"
           type="text"
-          placeholder="#tag1, #tag2, #tag3"
+          placeholder="tag1, tag2, tag3"
           name="tags"
           id="post-tags"
           value={form.tags}

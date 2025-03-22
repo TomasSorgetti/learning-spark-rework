@@ -5,7 +5,7 @@ import BlogPostCard from "../ui/cards/BlogPostCard";
 import BlogPagination from "../ui/pagination/BlogPagination";
 import BlogSearchBar from "../ui/forms/BlogSearchBar";
 
-export function BlogPosts({ posts, currentPage, totalPosts, search }) {
+export function BlogPosts({ posts = [], currentPage, totalPosts, search }) {
   const postsPerPage = 9;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
@@ -22,39 +22,37 @@ export function BlogPosts({ posts, currentPage, totalPosts, search }) {
       </div>
 
       {/* Search */}
-      <BlogSearchBar search={search} />
+      <BlogSearchBar search={search} href="/blog" />
       {/* Posts */}
       <div className="flex gap-3 my-10 justify-center w-full max-w-[1000px] mx-auto flex-wrap lg:justify-start">
-        {posts.length === 0 ? (
-          <span className="text-center font-bold text-[38px] mb-6 max-w-[600px] mx-auto">
-            No posts found
-          </span>
-        ) : (
-          posts.map((post) => {
-            const plainTextContent = htmlToText(post.content, {
-              wordwrap: false,
-              tags: { p: { behavior: "text" } },
-            });
-            const previewText = cutText(plainTextContent, 100);
-            const formatedDate = formatDate(post.createdAt);
+        {posts?.map((post) => {
+          const plainTextContent = htmlToText(post.content, {
+            wordwrap: false,
+            tags: { p: { behavior: "text" } },
+          });
+          const previewText = cutText(plainTextContent, 100);
+          const formatedDate = formatDate(post.createdAt);
 
-            return (
-              <BlogPostCard
-                key={post._id}
-                title={post.title}
-                description={previewText}
-                image={post.image}
-                url={post.url}
-                subject={post.subjectId.name}
-                author={post.author}
-                createdAt={formatedDate}
-              />
-            );
-          })
-        )}
+          return (
+            <BlogPostCard
+              key={post._id}
+              title={post.title}
+              description={previewText}
+              image={post.image}
+              url={post.url}
+              subject={post.subjectId.name}
+              author={post.author}
+              createdAt={formatedDate}
+            />
+          );
+        })}
       </div>
 
-      <BlogPagination currentPage={currentPage} totalPages={totalPages} />
+      <BlogPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        href="/blog"
+      />
     </section>
   );
 }

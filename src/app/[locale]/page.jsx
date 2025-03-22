@@ -39,7 +39,7 @@ export default async function HomePage({ params, searchParams }) {
   const t = await getTranslations();
 
   return (
-    <main className="">
+    <main className="pt-20 md:pt-26 lg:pt-20">
       <HomeBanner t={t} />
       <Pricing t={t} />
       <GroupClass t={t} />

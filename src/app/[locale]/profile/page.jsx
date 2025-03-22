@@ -45,9 +45,9 @@ export default function ProfilePage() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-32">
       <AuthGuard>
-        <div className=" flex justify-between mt-32 max-w-[1200px] mx-auto">
+        <div className=" flex justify-between max-w-[1200px] mx-auto">
           <ProfileInfo />
 
           <div className="w-full max-w-[860px] flex flex-col gap-4">

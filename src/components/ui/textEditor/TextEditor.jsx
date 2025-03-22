@@ -18,7 +18,7 @@ export default function TextEditor({ form, setForm, error, disabled, onBlur }) {
       StarterKit.configure({
         paragraph: {
           HTMLAttributes: {
-            "data-placeholder": "Ingresa tu contenido aquí...",
+            "data-placeholder": "",
           },
         },
       }),
@@ -54,7 +54,7 @@ export default function TextEditor({ form, setForm, error, disabled, onBlur }) {
 
   return (
     <div
-      className={`textEditorContainer`}
+      className={`textEditorContainer mx-2`}
       style={{
         border: error ? "1px solid red" : "1px solid #ccc",
         padding: "10px",

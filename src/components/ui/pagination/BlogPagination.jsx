@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/routing";
 
-export default function BlogPagination({ currentPage, totalPages }) {
+export default function BlogPagination({ currentPage, totalPages, href }) {
   if (totalPages <= 1) {
     return null;
   }
@@ -59,7 +59,7 @@ export default function BlogPagination({ currentPage, totalPages }) {
     <div className="flex items-center justify-center my-20 gap-4 w-full max-w-[600px] mx-auto">
       {/* Botón Prev */}
       <Link
-        href={`/blog?page=${prevPage}`}
+        href={`${href}?page=${prevPage}`}
         passHref
         className={`bg-secondary text-white h-[40px] px-6 rounded-md text-center flex items-center ${
           currentPage === 1 ? "opacity-50 pointer-events-none" : ""
@@ -74,7 +74,7 @@ export default function BlogPagination({ currentPage, totalPages }) {
         <div className="flex md:hidden gap-2">
           {mobilePages.map((page) => (
             <Link
-              href={`/blog?page=${page}`}
+              href={`${href}?page=${page}`}
               key={page}
               passHref
               className={`w-[40px] h-[40px] border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-md text-center flex items-center justify-center ${
@@ -94,7 +94,7 @@ export default function BlogPagination({ currentPage, totalPages }) {
         <div className="hidden md:flex gap-2">
           {desktopPages.map((page) => (
             <Link
-              href={`/blog?page=${page}`}
+              href={`${href}?page=${page}`}
               key={page}
               passHref
               className={`w-[40px] h-[40px] border border-secondary text-secondary hover:bg-secondary hover:text-white rounded-md text-center flex items-center justify-center ${
@@ -113,7 +113,7 @@ export default function BlogPagination({ currentPage, totalPages }) {
 
       {/* Botón Next */}
       <Link
-        href={`/blog?page=${nextPage}`}
+        href={`${href}?page=${nextPage}`}
         passHref
         className={`bg-secondary text-white h-[40px] px-6 rounded-md text-center flex items-center ${
           currentPage === totalPages ? "opacity-50 pointer-events-none" : ""

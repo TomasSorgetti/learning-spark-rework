@@ -1,4 +1,5 @@
 "use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -12,10 +13,9 @@ import PrevButton from "./buttons/PrevButton";
 import CustomDots from "./buttons/CustomDots";
 
 export function MostViewedPosts({ posts = [] }) {
-  if (!posts) return null;
-
+  
   return (
-    <section className="mt-14 w-full">
+    <section className="w-full">
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
@@ -27,7 +27,7 @@ export function MostViewedPosts({ posts = [] }) {
           pauseOnMouseEnter: true,
         }}
       >
-        {posts.map((post) => {
+        {posts?.map((post) => {
           const plainTextContent = htmlToText(post.content, {
             wordwrap: false,
             tags: { p: { behavior: "text" } },

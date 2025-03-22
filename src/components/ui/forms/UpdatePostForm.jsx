@@ -4,7 +4,6 @@ import { useState } from "react";
 import FormFieldInput from "./inputs/FormFieldInput";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 import ImageInput from "./inputs/ImageInput";
-import PostInput from "./inputs/PostInput";
 import TextEditor from "@/components/ui/textEditor/TextEditor";
 import {
   ValidatePost,
@@ -12,10 +11,12 @@ import {
 } from "../../../lib/validators/PostValidation";
 import { useSubjects } from "@/hooks/useSubjects";
 import SubjectSelector from "./inputs/SubjectSelector";
-import { createPost } from "@/lib/queries/blog";
+import { updatePost, deletePost } from "@/lib/queries/blog";
 import { useToastContext } from "@/features/toast/ToastContext";
+import { useRouter } from "@/i18n/routing";
 
 export default function UpdatePostForm({ post }) {
+  const router = useRouter();
   const { addToast } = useToastContext();
   const { isLoading, startLoading, finishLoading } = useLoading();
   const {
@@ -33,6 +34,9 @@ export default function UpdatePostForm({ post }) {
     tags: post.tags,
     subject: post.subjectId._id,
   });
+  const [previewImage, setPreviewImage] = useState(
+    post.image || "/images/placeholder.png"
+  );
 
   const [error, setError] = useState({
     title: "",
@@ -66,6 +70,12 @@ export default function UpdatePostForm({ post }) {
           ...prev,
           image: file,
         }));
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          setPreviewImage(reader.result);
+        };
+        reader.readAsDataURL(file);
       }
     } else {
       setForm((prev) => ({
@@ -95,12 +105,13 @@ export default function UpdatePostForm({ post }) {
       isLoading ||
       !form.title ||
       !form.content ||
-      !form.image ||
       !form.url ||
       !form.author ||
       !form.tags
     )
       return;
+
+    console.log("Enviando form...");
 
     startLoading();
     const formData = new FormData();
@@ -114,12 +125,12 @@ export default function UpdatePostForm({ post }) {
     formData.append("subjectId", form.subject);
 
     try {
-      const res = await createPost(formData);
+      const res = await updatePost(post._id, formData);
       console.log(res);
       if (res.error) {
         throw new Error(res.message);
       }
-      addToast("Post created successfully", "success");
+      addToast("Post updated successfully", "success");
       setForm({
         title: "",
         content: "",
@@ -130,21 +141,56 @@ export default function UpdatePostForm({ post }) {
         subject: "",
       });
     } catch (error) {
-      addToast("Error to create post", "error");
+      addToast("Error to update post", "error");
       console.log(error.message);
     } finally {
       finishLoading();
     }
   };
 
+  const handleDeletePost = async () => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
+    if (!confirm) return;
+    try {
+      startLoading();
+      const res = await deletePost(post._id);
+      console.log(res);
+      if (res.error) {
+        console.log("error:", res.message);
+        throw new Error(res.message);
+      } else {
+        addToast("Post deleted successfully", "success");
+        router.replace("/admin/blog");
+      }
+    } catch (error) {
+      console.log("Second Error:", error);
+      addToast("Error to delete post", "error");
+    } finally {
+      finishLoading();
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="w-full flex mt-20 h-screen">
+    <form
+      onSubmit={handleSubmit}
+      className="relative w-full flex mt-20 h-screen"
+    >
+      <div
+        className="absolute top-0 left-0 w-full h-[300px] bg-center bg-no-repeat bg-cover z-[-1] bg-gray-400"
+        style={{
+          backgroundImage: `url(${previewImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
       <title>{`Update Post - ${
         form.title.trim() !== "" ? form.title : "Learning Spark"
       }`}</title>
       <div className="w-full flex flex-col items-center gap-4">
-        <h1 className="text-3xl font-bold mt-16">Create Post</h1>
-        <PostInput
+        <h1 className="text-3xl text-white font-bold mt-16">Update Post</h1>
+        <input
           type="text"
           placeholder="Complete the title..."
           name="title"
@@ -153,6 +199,7 @@ export default function UpdatePostForm({ post }) {
           onBlur={handleBlur}
           disabled={isLoading}
           error={error.title}
+          className="bg-transparent text-[3rem] text-center text-white font-bold mx-auto"
         />
         <TextEditor
           form={form}
@@ -214,7 +261,7 @@ export default function UpdatePostForm({ post }) {
         <FormFieldInput
           label="Tags:"
           type="text"
-          placeholder="#tag1, #tag2, #tag3"
+          placeholder="tag1, tag2, tag3"
           name="tags"
           id="post-tags"
           value={form.tags}
@@ -227,8 +274,18 @@ export default function UpdatePostForm({ post }) {
           type="submit"
           className="mt-8 w-full rounded-full bg-primary transition-all duration-500 hover:bg-alter3 hover:shadow-xl focus:bg-alter4 py-2 text-center text-white font-semibold lg:py-4"
         >
-          Create Post
+          Update Post
         </button>
+        <div className="flex items-center gap-2 w-full justify-center mt-4">
+          <p>I want to</p>
+          <button
+            type="button"
+            onClick={handleDeletePost}
+            className="text-red-500 underline hover:text-red-700"
+          >
+            Delete Post
+          </button>
+        </div>
       </aside>
     </form>
   );

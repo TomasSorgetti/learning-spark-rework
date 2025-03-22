@@ -7,7 +7,7 @@ import FormFieldInput from "./inputs/FormFieldInput";
 import { useSubjects } from "@/hooks/useSubjects";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
 
-export default function BlogSearchBar({ search: initialSearch = "" }) {
+export default function BlogSearchBar({ search: initialSearch = "", href }) {
   const router = useRouter();
   const {
     subjects,
@@ -37,7 +37,7 @@ export default function BlogSearchBar({ search: initialSearch = "" }) {
         filter.subject !== "none" ? `&subject=${filter.subject}` : "";
 
       if (filter.search !== initialSearch || filter.subject !== "none") {
-        router.push(`/blog?page=1${searchParam}${subjectParam}`);
+        router.push(`${href}?page=1${searchParam}${subjectParam}`);
       }
     }, 500);
 

@@ -1,49 +1,38 @@
+import { Link } from "@/i18n/routing";
 import { getPostBySlug } from "@/lib/queries/blog";
 import { formatDate } from "@/lib/utils/formatDate";
 import Image from "next/image";
 
-// Manual Cache with Map
-const postCache = new Map();
-
-async function getCachedPost(slug) {
-  if (postCache.has(slug)) {
-    return postCache.get(slug);
-  }
-  const post = await getPostBySlug(slug);
-  postCache.set(slug, post);
-  return post;
-}
-
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = await getCachedPost(slug);
+  const post = await getPostBySlug(slug);
 
   return {
-    title: `${post.title} - Learning Spark Blog`,
-    description: post.content.substring(0, 160),
-    keywords: post.tags,
+    title: `${post?.title} - Learning Spark Blog`,
+    description: post?.content?.substring(0, 160),
+    keywords: post?.tags,
     openGraph: {
-      title: `${post.title} - Learning Spark Blog`,
-      description: post.content.substring(0, 160),
+      title: `${post?.title} - Learning Spark Blog`,
+      description: post?.content?.substring(0, 160),
       images: [
         {
           url: "/images/placeholder.png",
           width: 800,
           height: 600,
-          alt: post.title,
+          alt: post?.title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${post.title} - Learning Spark Blog`,
-      description: post.content.substring(0, 160),
+      description: post?.content?.substring(0, 160),
       images: [
         {
           url: "/images/placeholder.png",
           width: 800,
           height: 600,
-          alt: post.title,
+          alt: post?.title,
         },
       ],
     },
@@ -65,10 +54,25 @@ export async function generateMetadata({ params }) {
 
 export default async function PostPage({ params }) {
   const { slug } = await params;
-  const post = await getCachedPost(slug);
+  const post = await getPostBySlug(slug);
 
+  if (post.error || !post) {
+    return (
+      <main className="h-screen w-full mt-28 flex flex-col items-center justify-center gap-4">
+        <span className="text-red-500">
+          We could not find any post or server is down. Try again later.
+        </span>
+        <Link
+          href="/"
+          className="bg-primary cursor-pointer text-center transition-all duration-500 hover:bg-alter3 focus:bg-alter4 hover:shadow-lg px-6 py-2 text-white rounded-full font-semibold text-[18px]"
+        >
+          Go Home
+        </Link>
+      </main>
+    );
+  }
   return (
-    <main className="min-h-screen flex flex-col items-center mt-12">
+    <main className="min-h-screen flex flex-col items-center pt-20 md:pt-26 lg:pt-20">
       <section className="w-full h-[400px] relative flex flex-col items-center justify-center">
         <Image
           src="/images/placeholder.png"

@@ -84,6 +84,7 @@ export default async function LocaleLayout({ children, params }) {
   const locale = (await params).locale;
 
   if (!routing.locales.includes(locale)) {
+    // TODO => routing.defaultLocale = en , locale=en|es, fix => /en/en
     //? add /en to the url or redirect notFound
     redirect(`/${routing.defaultLocale}/${locale}`);
     // notFound()

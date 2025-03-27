@@ -39,7 +39,7 @@ export default async function AdminBlog({ searchParams }) {
 
   const totalPages = Math.ceil(blog?.total / limit);
 
-  if (!blog || blog?.posts?.length === 0 || blog.error) {
+  if (blog.error) {
     return (
       <main className="h-screen w-full mt-28 flex flex-col items-center justify-center gap-4">
         <span className="text-red-500">
@@ -68,9 +68,13 @@ export default async function AdminBlog({ searchParams }) {
       </div>
 
       <div className="w-full flex flex-col gap-1 overflow-y-scroll">
-        {blog?.posts?.map((post) => (
-          <BlogRow key={post._id} {...post} subject={post.subjectId.name} />
-        ))}
+        {blog?.posts?.length === 0 ? (
+          <span className="">There are no posts to show.</span>
+        ) : (
+          blog?.posts?.map((post) => (
+            <BlogRow key={post._id} {...post} subject={post.subjectId.name} />
+          ))
+        )}
       </div>
       <BlogPagination
         currentPage={page}

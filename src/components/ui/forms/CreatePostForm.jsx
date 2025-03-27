@@ -30,7 +30,7 @@ export default function CreatePostForm() {
     image: null,
     url: "",
     author: "",
-    tags: "",
+    tags: [],
     subject: "",
   });
 
@@ -67,6 +67,13 @@ export default function CreatePostForm() {
           image: file,
         }));
       }
+    } else if (name === "tags") {
+      const tags = value.split(",").map((tag) => tag.trim());
+
+      setForm((prev) => ({
+        ...prev,
+        tags,
+      }));
     } else {
       setForm((prev) => ({
         ...prev,
@@ -178,7 +185,7 @@ export default function CreatePostForm() {
           onBlur={handleBlur}
         />
         <ImageInput
-          label="Image:"
+          label="Image: (1440x400)"
           id="post-image"
           name="image"
           onChange={handleChange}

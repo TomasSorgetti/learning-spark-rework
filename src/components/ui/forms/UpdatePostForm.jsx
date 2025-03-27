@@ -8,14 +8,14 @@ import TextEditor from "@/components/ui/textEditor/TextEditor";
 import {
   ValidatePost,
   validatePostForm,
-} from "../../../lib/validators/PostValidation";
+} from "../../../lib/validators/UpdatePostValidation";
 import { useSubjects } from "@/hooks/useSubjects";
 import SubjectSelector from "./inputs/SubjectSelector";
 import { updatePost, deletePost } from "@/lib/queries/blog";
 import { useToastContext } from "@/features/toast/ToastContext";
 import { useRouter } from "@/i18n/routing";
 
-export default function UpdatePostForm({ post }) {
+export default function UpdatePostForm({ post = {} }) {
   const router = useRouter();
   const { addToast } = useToastContext();
   const { isLoading, startLoading, finishLoading } = useLoading();
@@ -34,6 +34,7 @@ export default function UpdatePostForm({ post }) {
     tags: post.tags,
     subject: post.subjectId._id,
   });
+
   const [previewImage, setPreviewImage] = useState(
     post.image || "/images/placeholder.png"
   );
@@ -77,6 +78,13 @@ export default function UpdatePostForm({ post }) {
         };
         reader.readAsDataURL(file);
       }
+    } else if (name === "tags") {
+      const tags = value.split(",").map((tag) => tag.trim());
+
+      setForm((prev) => ({
+        ...prev,
+        tags,
+      }));
     } else {
       setForm((prev) => ({
         ...prev,
@@ -103,6 +111,7 @@ export default function UpdatePostForm({ post }) {
 
     if (
       isLoading ||
+      !post._id ||
       !form.title ||
       !form.content ||
       !form.url ||
@@ -111,18 +120,18 @@ export default function UpdatePostForm({ post }) {
     )
       return;
 
-    console.log("Enviando form...");
-
     startLoading();
     const formData = new FormData();
     formData.append("title", form.title);
     formData.append("content", form.content);
-    // Images need to be sended as files in FormData
-    formData.append("image", form.image);
     formData.append("url", form.url);
     formData.append("author", form.author);
     formData.append("tags", form.tags);
     formData.append("subjectId", form.subject);
+
+    if (form.image && form.image instanceof File) {
+      formData.append("image", form.image);
+    }
 
     try {
       const res = await updatePost(post._id, formData);
@@ -131,15 +140,7 @@ export default function UpdatePostForm({ post }) {
         throw new Error(res.message);
       }
       addToast("Post updated successfully", "success");
-      setForm({
-        title: "",
-        content: "",
-        image: null,
-        url: "",
-        author: "",
-        tags: "",
-        subject: "",
-      });
+      router.replace("/admin/blog");
     } catch (error) {
       addToast("Error to update post", "error");
       console.log(error.message);
@@ -188,6 +189,7 @@ export default function UpdatePostForm({ post }) {
       <title>{`Update Post - ${
         form.title.trim() !== "" ? form.title : "Learning Spark"
       }`}</title>
+
       <div className="w-full flex flex-col items-center gap-4">
         <h1 className="text-3xl text-white font-bold mt-16">Update Post</h1>
         <input
@@ -225,7 +227,7 @@ export default function UpdatePostForm({ post }) {
           onBlur={handleBlur}
         />
         <ImageInput
-          label="Image:"
+          label="Image: (1440x400)"
           id="post-image"
           name="image"
           onChange={handleChange}

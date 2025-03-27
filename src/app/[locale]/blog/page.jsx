@@ -33,7 +33,7 @@ export default async function BlogsPage({ params, searchParams }) {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center pt-20 md:pt-26 lg:pt-20">
-      {!topPosts || topPosts.length === 0 || topPosts.error ? null : (
+      {!topPosts || topPosts.length <= 3 || topPosts.error ? null : (
         <MostViewedPosts posts={topPosts} />
       )}
 

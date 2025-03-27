@@ -25,7 +25,7 @@ export const ValidatePost = (name, value) => {
       return "";
 
     case "image":
-      // if (value === null) return "Image is required";
+      if (value === null) return "Image is required";
       return "";
 
     case "url":

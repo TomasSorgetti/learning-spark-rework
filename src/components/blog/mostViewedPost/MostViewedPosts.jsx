@@ -13,7 +13,6 @@ import PrevButton from "./buttons/PrevButton";
 import CustomDots from "./buttons/CustomDots";
 
 export function MostViewedPosts({ posts = [] }) {
-  
   return (
     <section className="w-full">
       <Swiper
@@ -38,7 +37,7 @@ export function MostViewedPosts({ posts = [] }) {
           return (
             <SwiperSlide key={post._id} className="relative cursor-grab">
               <Image
-                src="/images/placeholder.png"
+                src={post.image || "/images/placeholder.png"}
                 alt={post.title}
                 width={313}
                 height={200}

@@ -75,7 +75,7 @@ export default async function PostPage({ params }) {
     <main className="min-h-screen flex flex-col items-center pt-20 md:pt-26 lg:pt-20">
       <section className="w-full h-[400px] relative flex flex-col items-center justify-center">
         <Image
-          src="/images/placeholder.png"
+          src={post.image || "/images/placeholder.png"}
           alt={post.title}
           width={313}
           height={200}

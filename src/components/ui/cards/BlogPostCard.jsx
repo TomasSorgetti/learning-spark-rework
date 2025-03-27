@@ -10,29 +10,25 @@ export default function BlogPostCard({
   author,
   createdAt,
 }) {
-  const validImage =
-    image.trim() === "" || !image ? "/images/placeholder.png" : image;
-
   return (
     <div className="flex flex-col gap-4 max-w-[313px] w-full h-[476px] bg-white border border-[1px]-gray rounded-[10px] shadow-md">
-      {/* Image */}
       <div className="relative overflow-hidden h-[200px]">
         <div className="absolute top-0 left-0 p-4 z-10 flex flex-col items-start gap-2 text-white">
           <span>By {author}</span>
           <p>{createdAt}</p>
         </div>
+        
         <Image
-          // src={validImage}
-          src="/images/placeholder.png"
+          src={image || "/images/placeholder.png"}
           alt={title}
           width={313}
           height={200}
           draggable={false}
           loading="lazy"
-          className="rounded-[10px] object-cover"
+          className="rounded-t-[10px] object-cover h-full"
         />
       </div>
-      {/* content */}
+
       <div className="h-full max-h-[276px] flex flex-col justify-between items-start p-6 pt-0">
         <div className="flex flex-col items-start gap-2">
           <span className="flex gap-2 items-center justify-start">

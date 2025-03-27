@@ -36,28 +36,38 @@ export default function Navbar() {
             showNav ? "translate-x-0" : "translate-x-[100%]"
           } lg:relative lg:w-auto lg:bg-transparent lg:h-auto lg:flex-row lg:justify-end lg:gap-8 lg:translate-x-0 `}
         >
-          <li onClick={hideNavbar} className="flex items-center">
+          {/* <li onClick={hideNavbar} className="flex items-center">
             <Link href="/#" className="hover:text-secondary hover:font-bold">
               Home
             </Link>
+          </li> */}
+          <li onClick={hideNavbar} className="flex items-center">
+            <a href="#pricing">{t("Pricing")}</a>
           </li>
           <li onClick={hideNavbar} className="flex items-center">
+            <a href="#coaching">{t("Coaching")}</a>
+          </li>
+          <li onClick={hideNavbar} className="flex items-center">
+            <a href="#about">{t("About")}</a>
+          </li>
+
+          {/* <li onClick={hideNavbar} className="flex items-center">
             <Link
               href="/blog?page=1"
               className="hover:text-secondary hover:font-bold"
             >
               Blog
             </Link>
-          </li>
+          </li> */}
           {/* <li>
             <ResoursesDropdown />
           </li> */}
           {/* TODO => Remove isAdmin when needs */}
-          {isAuthenticated && (
+          {/* {isAuthenticated && (
             <li>
               <AuthSelector t={t} />
             </li>
-          )}
+          )} */}
           <li>
             <LanguageChange />
           </li>

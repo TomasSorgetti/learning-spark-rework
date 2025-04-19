@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function AuthSelector({ t }) {
   const { locale } = useRouter();
+  const router = useRouter();
   const { isAuthenticated, cleanAuth, isAdmin } = useAuthStore();
   const { startLoading, finishLoading } = useLoading();
   const [showMenu, setShowMenu] = useState(false);
@@ -32,16 +33,19 @@ export default function AuthSelector({ t }) {
     try {
       startLoading();
       const response = await logoutSession();
-      cleanAuth();
-      console.log(response);
+      if (!response.error) cleanAuth();
+      else throw new Error(response.message);
     } catch (error) {
-      console.log(error);
+      router.replace("/500");
     } finally {
       finishLoading();
     }
   };
 
   if (!hydrated) return null;
+
+  // TODO => remove when progress app will be ready
+  if (!isAuthenticated) return null;
 
   return (
     <>

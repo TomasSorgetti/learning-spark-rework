@@ -1,8 +1,8 @@
 "use client";
 
-import ProfileInfo from "@/components/forms/ProfileInfo";
+import ProfileInfo from "@/components/ui/forms/ProfileInfo";
 import { useLoading } from "@/features/loadingBar/context/loadingContext";
-import AuthGuard from "@/layouts/guards/AuthGuard";
+import AuthGuard from "@/lib/guards/AuthGuard";
 import useSessionStore from "@/lib/store/sessionStore";
 import { getAllSessions, deleteSession } from "@/lib/queries/sessions";
 import { useEffect } from "react";
@@ -45,9 +45,9 @@ export default function ProfilePage() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-32">
       <AuthGuard>
-        <div className=" flex justify-between mt-32 max-w-[1200px] mx-auto">
+        <div className=" flex justify-between max-w-[1200px] mx-auto">
           <ProfileInfo />
 
           <div className="w-full max-w-[860px] flex flex-col gap-4">

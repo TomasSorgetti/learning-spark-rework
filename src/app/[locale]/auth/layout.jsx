@@ -1,4 +1,4 @@
-import GuestGuard from "@/layouts/guards/GuestGuard";
+import GuestGuard from "@/lib/guards/GuestGuard";
 
 export default async function AuthLayout({ children }) {
   return (

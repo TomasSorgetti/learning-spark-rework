@@ -40,14 +40,14 @@ export const ValidatePost = (name, value) => {
       return "";
 
     case "tags":
-      if (!value.trim()) return "Tags are required";
-      const tags = value.split(",").map((tag) => tag.trim());
-      if (tags.length < 3) return "At least 3 tags are required";
-      for (let i = 0; i < tags.length; i++) {
-        if (tags[i][0] !== "#") return "Each tag must start with #";
-        else if (tags[i].length < 4)
-          return "Each tag must be at least 3 characters long";
-      }
+      // if (!value.trim()) return "Tags are required";
+      // const tags = value.split(",").map((tag) => tag.trim());
+      // if (tags.length < 3) return "At least 3 tags are required";
+      // for (let i = 0; i < tags.length; i++) {
+      //   if (tags[i][0] !== "#") return "Each tag must start with #";
+      //   if (tags[i].length < 4)
+      //     return "Each tag must be at least 3 characters long";
+      // }
       return "";
 
     case "subject":

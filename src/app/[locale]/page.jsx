@@ -1,11 +1,11 @@
 import { getTranslations } from "next-intl/server";
-import HomeBanner from "@/layouts/home/Banner";
-import Pricing from "@/layouts/home/Pricing";
-import GroupClass from "@/layouts/home/GroupClass";
-import Contact from "@/layouts/home/Contact";
-import Coaching from "@/layouts/home/Coaching";
-import WhatsappButton from "@/components/buttons/WhatsappButton";
-import About from "@/layouts/home/About";
+import HomeBanner from "@/components/home/Banner";
+import Pricing from "@/components/home/Pricing";
+import GroupClass from "@/components/home/GroupClass";
+import Contact from "@/components/home/Contact";
+import Coaching from "@/components/home/Coaching";
+import WhatsappButton from "@/components/ui/buttons/WhatsappButton";
+import About from "@/components/home/About";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const locale = (await params).locale;
@@ -39,7 +39,7 @@ export default async function HomePage({ params, searchParams }) {
   const t = await getTranslations();
 
   return (
-    <main className="">
+    <main className="pt-20 md:pt-26 lg:pt-20">
       <HomeBanner t={t} />
       <Pricing t={t} />
       <GroupClass t={t} />

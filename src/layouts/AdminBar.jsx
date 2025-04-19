@@ -23,7 +23,7 @@ export default function AdminBar() {
 
   return (
     <aside
-      className={`bg-secondary py-32 px-6 h-full transform transition-all duration-500 ease-in-out ${
+      className={`bg-secondary z-30 py-32 px-6 h-full transform transition-all duration-500 ease-in-out ${
         collapsed ? "w-[220px]" : "w-[80px]"
       }`}
     >

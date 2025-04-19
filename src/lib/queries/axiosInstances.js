@@ -28,3 +28,4 @@ export const formInstance = axios.create({
 });
 
 authInterceptor(axiosInstance);
+authInterceptor(formInstance);

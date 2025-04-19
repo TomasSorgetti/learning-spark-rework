@@ -7,8 +7,9 @@ import { routing } from "@/i18n/routing";
 import Navbar from "@/layouts/Navbar";
 import Footer from "@/layouts/Footer";
 import { LoadingProvider } from "@/features/loadingBar/context/loadingContext";
-import { AuthProvider } from "@/lib/context/AuthContext";
+import { AuthProvider } from "@/context/AuthContext";
 import LoadingBar from "@/features/loadingBar/components/LoadingBar";
+import { ToastProvider } from "@/features/toast/ToastContext";
 
 const Poppins = localFont({
   src: [
@@ -83,6 +84,7 @@ export default async function LocaleLayout({ children, params }) {
   const locale = (await params).locale;
 
   if (!routing.locales.includes(locale)) {
+    // TODO => routing.defaultLocale = en , locale=en|es, fix => /en/en
     //? add /en to the url or redirect notFound
     redirect(`/${routing.defaultLocale}/${locale}`);
     // notFound()
@@ -98,7 +100,7 @@ export default async function LocaleLayout({ children, params }) {
             <AuthProvider>
               <Navbar />
               <LoadingBar />
-              {children}
+              <ToastProvider>{children}</ToastProvider>
               <Footer />
             </AuthProvider>
           </NextIntlClientProvider>

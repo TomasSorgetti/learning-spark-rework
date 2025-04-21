@@ -14,6 +14,7 @@ import { useSubjects } from "@/hooks/useSubjects";
 import SubjectSelector from "./inputs/SubjectSelector";
 import { createPost } from "@/lib/queries/blog";
 import { useToastContext } from "@/features/toast/ToastContext";
+import Image from "next/image";
 
 export default function CreatePostForm() {
   const { addToast } = useToastContext();
@@ -33,6 +34,8 @@ export default function CreatePostForm() {
     tags: [],
     subject: "",
   });
+
+  const [imagePreview, setImagePreview] = useState("/images/placeholder.png");
 
   const [error, setError] = useState({
     title: "",
@@ -61,15 +64,24 @@ export default function CreatePostForm() {
             image: "Please select an image file",
           }));
           return;
+          rapprochement;
         }
         setForm((prev) => ({
           ...prev,
           image: file,
         }));
+        // Generate a temporary URL for the preview
+        setImagePreview(URL.createObjectURL(file));
+      } else {
+        // Reset to placeholder if no file is selected
+        setImagePreview("/images/placeholder.png");
+        setForm((prev) => ({
+          ...prev,
+          image: null,
+        }));
       }
     } else if (name === "tags") {
       const tags = value.split(",").map((tag) => tag.trim());
-
       setForm((prev) => ({
         ...prev,
         tags,
@@ -145,12 +157,27 @@ export default function CreatePostForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full flex mt-20 h-screen">
+    <form
+      onSubmit={handleSubmit}
+      className="relative w-full flex mt-20 h-screen"
+    >
       <title>{`Create Post - ${
         form.title.trim() !== "" ? form.title : "Learning Spark"
       }`}</title>
+
+      <div
+        className="absolute top-0 left-0 w-full h-[300px] z-[-1] bg-gray-400"
+        style={{
+          backgroundImage: `url(${imagePreview})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: "brightness(70%)",
+        }}
+      ></div>
+
       <div className="w-full flex flex-col items-center gap-4">
-        <h1 className="text-3xl font-bold mt-16">Create Post</h1>
+        <h1 className="text-3xl font-bold mt-16 text-white">Create Post</h1>
         <PostInput
           type="text"
           placeholder="Complete the title..."

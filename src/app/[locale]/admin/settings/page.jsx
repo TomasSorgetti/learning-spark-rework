@@ -1,7 +1,7 @@
 export default function AdminSettings() {
   return (
-    <section>
-      <h1>Admin Settings</h1>
-    </section>
+    <main className="min-h-screen w-full flex flex-col items-center justify-center">
+      <span className="text-red-500">This page is not yet implemented</span>
+    </main>
   );
 }

@@ -179,7 +179,7 @@ export default function UpdatePostForm({ post = {} }) {
       className="relative w-full flex mt-20 h-screen"
     >
       <div
-        className="absolute top-0 left-0 w-full h-[300px] bg-center bg-no-repeat bg-cover z-[-1] bg-gray-400"
+        className="absolute top-0 left-0 w-full h-[300px] bg-center bg-no-repeat bg-cover z-[-1] bg-gray-400 filter brightness-[70%]"
         style={{
           backgroundImage: `url(${previewImage})`,
           backgroundSize: "cover",

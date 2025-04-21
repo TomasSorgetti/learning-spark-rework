@@ -17,7 +17,7 @@ export default function BlogPostCard({
           <span>By {author}</span>
           <p>{createdAt}</p>
         </div>
-        
+
         <Image
           src={image || "/images/placeholder.png"}
           alt={title}
@@ -25,7 +25,7 @@ export default function BlogPostCard({
           height={200}
           draggable={false}
           loading="lazy"
-          className="rounded-t-[10px] object-cover h-full"
+          className="rounded-t-[10px] object-cover h-full filter brightness-[70%] z-[-1]"
         />
       </div>
 

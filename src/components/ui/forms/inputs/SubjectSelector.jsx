@@ -1,3 +1,5 @@
+import { Link } from "@/i18n/routing";
+
 export default function SubjectSelector({
   id,
   label,
@@ -36,7 +38,12 @@ export default function SubjectSelector({
           </button>
         </div>
       ) : !Array.isArray(subjects) || subjects.length === 0 ? (
-        <p className="text-gray-500">No subjects available</p>
+        <p className="text-gray-500">
+          No subjects available.{" "}
+          <Link href="/admin/settings" className="underline text-secondary">
+            create one
+          </Link>
+        </p>
       ) : (
         <>
           <select

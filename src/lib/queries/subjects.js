@@ -7,19 +7,33 @@ const subjectsCache = new LRUCache({
 });
 
 export const getAllSubjects = async () => {
-    const cachedSubjects = subjectsCache.get("subjects");
-    if (cachedSubjects) {
-      return cachedSubjects;
-    }
-    try {
-      const res = await authInstance.get("/subject");
-      subjectsCache.set("subjects", res.data);  
-      return res.data;
-    } catch (error) {
-      subjectsCache.delete("subjects");
-      return {
-        error: true,
-        message: error.response?.data?.message || "Error to get subjects",
-      };
-    }
-  };
+  const cachedSubjects = subjectsCache.get("subjects");
+  if (cachedSubjects) {
+    return cachedSubjects;
+  }
+  try {
+    const res = await authInstance.get("/subject");
+    subjectsCache.set("subjects", res.data);
+    return res.data;
+  } catch (error) {
+    subjectsCache.delete("subjects");
+    return {
+      error: true,
+      message: error.response?.data?.message || "Error to get subjects",
+    };
+  }
+};
+
+export const createSubject = async (name) => {
+  try {
+    const res = await axiosInstance.post("/subject", {
+      name,
+    });
+    return res.data;
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response?.data?.message || "Error to create subject",
+    };
+  }
+};

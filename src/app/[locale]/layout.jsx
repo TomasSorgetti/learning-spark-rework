@@ -106,9 +106,9 @@ export default async function LocaleLayout({ children, params }) {
             </AuthProvider>
           </NextIntlClientProvider>
         </LoadingProvider>
-        
+
         {/* vercel analytics */}
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   );

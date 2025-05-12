@@ -64,42 +64,46 @@ export default function ProfileInfo() {
             <span key={index}>{role.name},</span>
           ))}
         </p>
-        <div>
-          <FormFieldInput
-            label="Password:"
-            type="password"
-            name="password"
-            placeholder="********"
-            id="profile-password"
-            value={form.password}
-            onChange={handleChange}
-            disabled={isLoading}
-            isPassword
-          />
-          <FormFieldInput
-            label="New Password:"
-            type="password"
-            name="newPassword"
-            placeholder="********"
-            id="profile-new-password"
-            value={form.newPassword}
-            onChange={handleChange}
-            disabled={isLoading}
-            isPassword
-          />
-        </div>
-        <button
-          type="submit"
-          className={`${
-            isLoading
-              ? "pointer-events-none opacity-50"
-              : "cursor-pointer hover:bg-red-600"
-          }  bg-red-500 text-white py-3 rounded-full transition-all duration-500`}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "Update password"}
-        </button>
-        {<p className="text-red-500">{error}</p>}
+        {!user?.provider && (
+          <div>
+            <div>
+              <FormFieldInput
+                label="Password:"
+                type="password"
+                name="password"
+                placeholder="********"
+                id="profile-password"
+                value={form.password}
+                onChange={handleChange}
+                disabled={isLoading}
+                isPassword
+              />
+              <FormFieldInput
+                label="New Password:"
+                type="password"
+                name="newPassword"
+                placeholder="********"
+                id="profile-new-password"
+                value={form.newPassword}
+                onChange={handleChange}
+                disabled={isLoading}
+                isPassword
+              />
+            </div>
+            <button
+              type="submit"
+              className={`${
+                isLoading
+                  ? "pointer-events-none opacity-50"
+                  : "cursor-pointer hover:bg-red-600"
+              }  bg-red-500 text-white py-3 rounded-full transition-all duration-500`}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Update password"}
+            </button>
+            {<p className="text-red-500">{error}</p>}
+          </div>
+        )}
       </form>
     </section>
   );

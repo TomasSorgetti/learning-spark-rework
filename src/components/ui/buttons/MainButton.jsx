@@ -13,7 +13,6 @@ export default function MainButton({
     <>
       {locale ? (
         <Link
-          locale={locale}
           className={`bg-primary cursor-pointer text-center transition-all duration-500 hover:bg-alter3 focus:bg-alter4 hover:shadow-lg px-10 py-3 text-white rounded-full font-semibold text-[18px] lg:text-[20px] ${className}`}
           href={href}
           role="button"

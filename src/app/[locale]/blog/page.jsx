@@ -37,7 +37,7 @@ export default async function BlogsPage({ params, searchParams }) {
         <MostViewedPosts posts={topPosts} />
       )}
 
-      {!blog || blog.posts.length === 0 || blog.error ? (
+      {!blog || blog?.posts.length === 0 || blog.error ? (
         <div className="h-[500px] flex flex-col items-center justify-start gap-4">
           <span className="text-red-500">
             We could not find any posts or server is down. Try again later.
